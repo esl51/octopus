@@ -1,5 +1,5 @@
+/* global config */
 import Form from 'vform'
-import axios from 'axios'
 import { objectToFormData } from 'object-to-formdata'
 import { mapGetters } from 'vuex'
 
@@ -19,27 +19,27 @@ export const crud = {
     filters: {},
     form: {},
     attributes: {},
-    translatedAttributes: {},
+    translatedAttributes: {}
   }),
 
   computed: mapGetters({
     user: 'auth/user',
     locale: 'lang/locale',
-    fallbackLocale: 'lang/fallbackLocale',
+    fallbackLocale: 'lang/fallbackLocale'
   }),
 
   methods: {
 
     async fetchItems (ctx) {
-      let params = {
+      const params = {
         page: ctx.currentPage,
         per_page: ctx.perPage,
         sort_by: ctx.sortBy,
         sort_desc: ctx.sortDesc ? 1 : 0,
-        search: ctx.filter,
+        search: ctx.filter
       }
       if (Object.keys(this.filters).length) {
-        for (let filter in this.filters) {
+        for (const filter in this.filters) {
           params[filter] = this.filters[filter]
         }
       }
@@ -55,13 +55,13 @@ export const crud = {
     },
 
     initForm (formName, attributes, translatedAttributes) {
-      if (formName == undefined) {
+      if (formName === undefined) {
         formName = 'form'
       }
-      if (attributes == undefined) {
+      if (attributes === undefined) {
         attributes = this.attributes
       }
-      if (translatedAttributes == undefined) {
+      if (translatedAttributes === undefined) {
         translatedAttributes = this.translatedAttributes
       }
       var prepared = attributes
@@ -71,8 +71,8 @@ export const crud = {
           if (!prepared.translations[locale]) {
             prepared.translations[locale] = {}
           }
-          for (let attr in translatedAttributes) {
-            if (translatedAttributes.hasOwnProperty(attr)) {
+          for (const attr in translatedAttributes) {
+            if (Object.prototype.hasOwnProperty.call(translatedAttributes, attr)) {
               prepared.translations[locale][attr] = translatedAttributes[attr]
             }
           }
@@ -82,13 +82,13 @@ export const crud = {
     },
 
     fillForm (item, formName, attributes, translatedAttributes) {
-      if (formName == undefined) {
+      if (formName === undefined) {
         formName = 'form'
       }
-      if (attributes == undefined) {
+      if (attributes === undefined) {
         attributes = this.attributes
       }
-      if (translatedAttributes == undefined) {
+      if (translatedAttributes === undefined) {
         translatedAttributes = this.translatedAttributes
       }
       this.initForm(formName, attributes, translatedAttributes)
@@ -103,7 +103,7 @@ export const crud = {
         // translatable
         if (key === 'translations') {
           data.translations.forEach((translation) => {
-            for (let attr in translatedAttributes) {
+            for (const attr in translatedAttributes) {
               if (!this[formName][key][translation.locale]) {
                 this[formName][key][translation.locale] = {}
               }
@@ -166,7 +166,7 @@ export const crud = {
     },
 
     async trashItem (item) {
-      let value = await this.$bvModal.msgBoxConfirm(this.$t('delete_confirm', { name: item.title || item.name }), {
+      const value = await this.$bvModal.msgBoxConfirm(this.$t('delete_confirm', { name: item.title || item.name }), {
         title: this.$t('confirm_title'),
         okVariant: 'danger',
         okTitle: this.$t('yes'),
@@ -193,7 +193,7 @@ export const crud = {
         const { data } = await this.$axios.post(this.apiUrl + this.item.id + '/move-before/' + this.moveTo.id)
         this.item = data.data
       }
-    },
+    }
 
   },
 

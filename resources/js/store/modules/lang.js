@@ -7,14 +7,14 @@ const { locale, locales, fallbackLocale } = window.config
 export const state = {
   locale: Cookies.get('locale') || locale,
   locales: locales,
-  fallbackLocale: fallbackLocale,
+  fallbackLocale: fallbackLocale
 }
 
 // getters
 export const getters = {
   locale: state => state.locale,
   locales: state => state.locales,
-  fallbackLocale: state => state.fallbackLocale,
+  fallbackLocale: state => state.fallbackLocale
 }
 
 // mutations

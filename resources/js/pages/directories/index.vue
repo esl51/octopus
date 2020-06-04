@@ -1,15 +1,19 @@
 <template>
   <div>
-    <h1 class="mb-4">{{ $t('directories') }}</h1>
+    <h1 class="mb-4">
+      {{ $t('directories') }}
+    </h1>
 
     <tabs :items="tabs" />
 
-    <transition name="fade" mode="out-in">
+    <transition
+      name="fade"
+      mode="out-in"
+    >
       <div class="nav-tabs-content">
         <router-view />
       </div>
     </transition>
-
   </div>
 </template>
 
@@ -28,7 +32,7 @@ export default {
       user: 'auth/user'
     }),
     tabs () {
-      let tabs = []
+      const tabs = []
       if (this.user.can['manage statuses']) {
         tabs.push({
           icon: 'lightbulb',
@@ -42,17 +46,19 @@ export default {
   },
 
   created () {
-    this.$store.dispatch('common/setBreadcrumbs', { breadcrumbs: [
-      { text: this.$t('home'), to: { name: 'dashboard' } },
-      { text: this.$t('directories'), to: { name: 'directories' } },
-    ] })
+    this.$store.dispatch('common/setBreadcrumbs', {
+      breadcrumbs: [
+        { text: this.$t('home'), to: { name: 'dashboard' } },
+        { text: this.$t('directories'), to: { name: 'directories' } }
+      ]
+    })
   },
 
   mounted () {
     // open first tab
-    if (this.tabs.length && this.$route.name == 'directories') {
+    if (this.tabs.length && this.$route.name === 'directories') {
       this.$router.replace(this.tabs[0].route)
     }
-  },
+  }
 }
 </script>

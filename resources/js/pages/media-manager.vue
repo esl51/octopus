@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 class="mb-4">{{ $t('media_manager') }}</h1>
+    <h1 class="mb-4">
+      {{ $t('media_manager') }}
+    </h1>
     <file-manager :settings="settings" />
   </div>
 </template>
@@ -11,12 +13,12 @@ import { mapGetters } from 'vuex'
 export default {
   middleware: ['auth', 'acl'],
 
-  computed: mapGetters({
-    locale: 'lang/locale',
+  data: () => ({
+    settings: {}
   }),
 
-  data: () => ({
-    settings: {},
+  computed: mapGetters({
+    locale: 'lang/locale'
   }),
 
   metaInfo () {
@@ -24,13 +26,15 @@ export default {
   },
 
   created () {
-    this.$store.dispatch('common/setBreadcrumbs', { breadcrumbs: [
-      { text: this.$t('home'), to: { name: 'dashboard' } },
-      { text: this.$t('media_manager'), to: { name: 'media-manager' } },
-    ] })
+    this.$store.dispatch('common/setBreadcrumbs', {
+      breadcrumbs: [
+        { text: this.$t('home'), to: { name: 'dashboard' } },
+        { text: this.$t('media_manager'), to: { name: 'media-manager' } }
+      ]
+    })
 
     this.settings.lang = this.locale
-  },
+  }
 }
 </script>
 

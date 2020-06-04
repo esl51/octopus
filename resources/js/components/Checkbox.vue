@@ -1,12 +1,13 @@
 <template>
   <b-form-checkbox
+    :id="id || 'item-' + name"
     v-model="form[name]"
     :value="1"
     :unchecked-value="0"
     :state="form.errors && form.errors.has(name) ? false : null"
     :invalid-feedback="form.errors && form.errors.get(name)"
     :description="hint"
-    :id="id || 'item-' + name">
+  >
     {{ label }}
   </b-form-checkbox>
 </template>
@@ -19,7 +20,7 @@ export default {
     hint: { type: String, default: null },
     form: { type: Object, default: null },
     id: { type: String, default: null },
-    name: { type: String, default: null },
+    name: { type: String, default: null }
   }
 }
 </script>

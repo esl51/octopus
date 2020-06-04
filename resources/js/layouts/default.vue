@@ -1,10 +1,20 @@
 <template>
-  <div class="wrapper" :class="{ 'toggled': !sidebarActive }">
+  <div
+    class="wrapper"
+    :class="{ 'toggled': !sidebarActive }"
+  >
     <sidebar />
     <div class="page-content-wrapper">
       <navbar />
-      <b-breadcrumb class="rounded-0" v-if="breadcrumbs && breadcrumbs.length" :items="breadcrumbs" />
-      <b-container fluid class="mt-4">
+      <b-breadcrumb
+        v-if="breadcrumbs && breadcrumbs.length"
+        class="rounded-0"
+        :items="breadcrumbs"
+      />
+      <b-container
+        fluid
+        class="mt-4"
+      >
         <child />
       </b-container>
     </div>
@@ -19,14 +29,14 @@ import Navbar from '~/components/Navbar'
 export default {
   name: 'MainLayout',
 
-  computed: mapGetters({
-    breadcrumbs: 'common/breadcrumbs',
-    sidebarActive: 'common/sidebarActive',
-  }),
-
   components: {
     Sidebar,
-    Navbar,
-  }
+    Navbar
+  },
+
+  computed: mapGetters({
+    breadcrumbs: 'common/breadcrumbs',
+    sidebarActive: 'common/sidebarActive'
+  })
 }
 </script>

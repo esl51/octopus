@@ -1,47 +1,59 @@
 <template>
   <div>
-    <h1 class="mb-4">{{ $t('pages') }}</h1>
+    <h1 class="mb-4">
+      {{ $t('pages') }}
+    </h1>
 
     <!-- Filters -->
-    <b-input-group size="sm" class="my-3">
-
+    <b-input-group
+      size="sm"
+      class="my-3"
+    >
       <b-input-group-prepend>
-
         <!-- Add -->
-        <b-button v-b-tooltip.hover
-          @click="addItem()"
+        <b-button
+          v-b-tooltip.hover
           :title="$t('add')"
-          variant="success">
-          <fa icon="plus" fixed-width />
+          variant="success"
+          @click="addItem()"
+        >
+          <fa
+            icon="plus"
+            fixed-width
+          />
           <span class="d-none d-md-inline">{{ $t('add') }}</span>
         </b-button>
-
       </b-input-group-prepend>
 
       <!-- Search -->
       <b-form-input
+        id="filterInput"
         v-model="search"
         type="search"
-        id="filterInput"
         :debounce="200"
-        :placeholder="$t('search')" />
+        :placeholder="$t('search')"
+      />
 
       <b-input-group-append>
-
         <!-- Refresh -->
-        <b-button v-b-tooltip.hover
+        <b-button
+          v-b-tooltip.hover
+          :title="$t('refresh')"
           @click="refreshItems()"
-          :title="$t('refresh')">
-          <fa icon="sync" fixed-width />
+        >
+          <fa
+            icon="sync"
+            fixed-width
+          />
         </b-button>
-
       </b-input-group-append>
-
     </b-input-group>
 
     <!-- Items -->
-    <b-table small stacked="sm"
+    <b-table
       ref="items"
+      small
+      stacked="sm"
       :api-url="apiUrl"
       :items="fetchItems"
       :fields="fields"
@@ -51,43 +63,47 @@
       :sort-by.sync="sortBy"
       :sort-desc.sync="sortDesc"
       :sort-direction="sortDirection"
-      :filter="search">
-
+      :filter="search"
+    >
       <template v-slot:cell(status)="data">
         <div class="d-flex align-items-center">
-          <div v-if="data.item.status.variant" class="p-2 rounded mr-2" :class="'bg-' + data.item.status.variant" />
+          <div
+            v-if="data.item.status.variant"
+            class="p-2 rounded mr-2"
+            :class="'bg-' + data.item.status.variant"
+          />
           {{ data.item.status.name }}
         </div>
       </template>
 
       <template v-slot:cell(actions)="data">
-
         <!-- View -->
         <action-button
           :title="$t('view')"
           :href="data.item.url"
           target="_blank"
           class="mr-2"
-          icon="eye" />
+          icon="eye"
+        />
 
         <!-- Edit -->
         <action-button
-          @click.native="editItem(data.item)"
           :disabled="!data.item.is_editable"
           :title="$t('edit')"
           class="mr-2"
-          icon="edit" />
+          icon="edit"
+          @click.native="editItem(data.item)"
+        />
 
         <!-- Trash -->
         <action-button
-          @click.native="trashItem(data.item)"
           :disabled="!data.item.is_deletable"
           :title="$t('edit')"
           class="text-danger"
-          icon="trash-alt" />
-
+          icon="trash-alt"
+          @click.native="trashItem(data.item)"
+        />
       </template>
-
     </b-table>
 
     <!-- Pagination -->
@@ -98,72 +114,94 @@
       :per-page="perPage"
       align="right"
       size="sm"
-      class="my-0" />
+      class="my-0"
+    />
 
     <!-- View -->
-    <b-modal centered ok-only
+    <b-modal
       id="itemView"
-      :title="item.name">
-
-      <b-table small stacked
+      centered
+      ok-only
+      :title="item.name"
+    >
+      <b-table
+        small
+        stacked
         :items="[item]"
         :fields="fields.filter(field => field.key != 'actions')"
-        class="table-view" />
-
+        class="table-view"
+      />
     </b-modal>
 
     <!-- Form -->
-    <b-modal centered no-enforce-focus no-close-on-backdrop
+    <b-modal
       id="itemModal"
+      centered
+      no-enforce-focus
+      no-close-on-backdrop
       size="lg"
-      :title="(item && item.name) || $t('page')">
-
+      :title="(item && item.name) || $t('page')"
+    >
       <b-form
         ref="itemForm"
         @submit.prevent="item && item.id ? updateItem() : createItem()"
-        @keydown="form.onKeydown($event)">
-
+        @keydown="form.onKeydown($event)"
+      >
         <b-tabs content-class="pt-2">
-          <b-tab active
-            :title="$t('common_data')">
-
+          <b-tab
+            active
+            :title="$t('common_data')"
+          >
             <!-- Title -->
-            <v-translatable-input autofocus
+            <v-translatable-input
+              autofocus
               :label="$t('title')"
               :hint="$t('title_hint')"
               :form="form"
-              name="title" />
+              name="title"
+            />
 
             <b-form-row>
-
-              <b-col sm="12" md="7">
+              <b-col
+                sm="12"
+                md="7"
+              >
                 <!-- Slug -->
                 <div class="position-relative">
                   <v-translatable-input
                     :label="$t('slug')"
                     :form="form"
                     :disabled="slugBusy"
-                    name="slug" />
-                  <b-button v-b-tooltip.hover
-                    @click="refreshSlugs()"
+                    name="slug"
+                  />
+                  <b-button
+                    v-b-tooltip.hover
                     :title="$t('refresh_slugs')"
                     :class="{ 'busy': slugBusy }"
                     variant="link"
-                    class="refresh-slug text-dark">
-                    <fa size="xs" icon="sync" />
+                    class="refresh-slug text-dark"
+                    @click="refreshSlugs()"
+                  >
+                    <fa
+                      size="xs"
+                      icon="sync"
+                    />
                   </b-button>
                 </div>
               </b-col>
 
-              <b-col sm="12" md="5">
+              <b-col
+                sm="12"
+                md="5"
+              >
                 <!-- Status -->
                 <v-select
                   :label="$t('status')"
                   :form="form"
                   :options="statuses"
-                  name="status_id" />
+                  name="status_id"
+                />
               </b-col>
-
             </b-form-row>
 
             <!-- Headline -->
@@ -171,60 +209,62 @@
               :label="$t('headline')"
               :hint="$t('headline_hint')"
               :form="form"
-              name="headline" />
+              name="headline"
+            />
 
             <!-- Body -->
             <v-translatable-editor
               :label="$t('body')"
               :form="form"
-              name="body" />
-
+              name="body"
+            />
           </b-tab>
 
           <b-tab
-            :title="$t('seo')">
-
+            :title="$t('seo')"
+          >
             <!-- Meta title -->
             <v-translatable-input
               :label="$t('meta_title')"
               :form="form"
-              name="meta_title" />
+              name="meta_title"
+            />
 
             <!-- Meta description -->
             <v-translatable-input
               :label="$t('meta_description')"
               :form="form"
-              name="meta_description" />
+              name="meta_description"
+            />
 
             <!-- Meta keywords -->
             <v-translatable-input
               :label="$t('meta_keywords')"
               :form="form"
-              name="meta_keywords" />
-
+              name="meta_keywords"
+            />
           </b-tab>
-
         </b-tabs>
 
-        <b-button v-show="false" ref="itemSubmit" type="submit" />
-
+        <b-button
+          v-show="false"
+          ref="itemSubmit"
+          type="submit"
+        />
       </b-form>
 
-       <template slot="modal-footer">
-
+      <template slot="modal-footer">
         <!-- Submit -->
         <b-button
-          @click="$refs.itemSubmit.click()"
           :disabled="form.busy"
           :variant="item && item.id ? 'primary' : 'success'"
-          :class="{ 'btn-loading': form.busy }">
+          :class="{ 'btn-loading': form.busy }"
+          @click="$refs.itemSubmit.click()"
+        >
           {{ item && item.id ? $t('update') : $t('create') }}
         </b-button>
-
-       </template>
-
+      </template>
     </b-modal>
-
   </div>
 </template>
 
@@ -244,7 +284,7 @@ export default {
   data: () => ({
     apiUrl: '/api/pages/',
     attributes: {
-      status_id: '',
+      status_id: ''
     },
     translatedAttributes: {
       slug: '',
@@ -253,27 +293,46 @@ export default {
       body: '',
       meta_title: '',
       meta_description: '',
-      meta_keywords: '',
+      meta_keywords: ''
     },
     oldTranslations: {},
-    slugBusy: false,
+    slugBusy: false
   }),
 
   computed: {
     ...mapGetters({
-      statuses: 'api/statuses',
+      statuses: 'api/statuses'
     }),
     defaultStatus () {
       return null
     },
     fields () {
       return [
-        { key: 'id', label: this.$t('id'), sortable: true, },
-        { key: 'title', label: this.$t('title'), sortable: true, },
+        { key: 'id', label: this.$t('id'), sortable: true },
+        { key: 'title', label: this.$t('title'), sortable: true },
         { key: 'status', label: this.$t('status'), sortable: true },
-        { key: 'actions', label: '', tdClass: 'table-actions', },
+        { key: 'actions', label: '', tdClass: 'table-actions' }
       ]
     }
+  },
+
+  async created () {
+    this.$store.dispatch('common/setBreadcrumbs', {
+      breadcrumbs: [
+        { text: this.$t('home'), to: { name: 'dashboard' } },
+        { text: this.$t('pages'), to: { name: 'pages' } }
+      ]
+    })
+    await this.$store.dispatch('api/fetchStatuses')
+
+    const defaultStatuses = this.statuses.filter(item => item.is_default)
+    if (defaultStatuses.length) {
+      this.attributes.status_id = defaultStatuses[0].id
+    }
+    this.debouncedGenerateSlug = _.debounce(this.generateSlug, 200)
+    Object.keys(this.form.translations).forEach(locale => {
+      this.$watch(() => this.form.translations[locale].title, this.debouncedGenerateSlug)
+    })
   },
 
   methods: {
@@ -283,12 +342,12 @@ export default {
     },
     async refreshSlugs () {
       this.slugBusy = true
-      let fallback = await this.fetchSlug(this.form.translations[this.fallbackLocale].title)
+      const fallback = await this.fetchSlug(this.form.translations[this.fallbackLocale].title)
       for (const locale of Object.keys(this.form.translations)) {
-        if (this.form.translations[locale].title != '') {
-          let val = await this.fetchSlug(this.form.translations[locale].title)
+        if (this.form.translations[locale].title !== '') {
+          const val = await this.fetchSlug(this.form.translations[locale].title)
           this.form.translations[locale].slug = val
-        } else if (this.form.translations[locale].title == '') {
+        } else if (this.form.translations[locale].title === '') {
           this.form.translations[locale].slug = fallback
         }
       }
@@ -297,31 +356,14 @@ export default {
     async generateSlug (value) {
       if (this.item && !this.item.id) {
         for (const locale of Object.keys(this.form.translations)) {
-          if (this.form.translations[locale].title === value || this.form.translations[locale].title == '') {
-            let val = await this.fetchSlug(value)
+          if (this.form.translations[locale].title === value || this.form.translations[locale].title === '') {
+            const val = await this.fetchSlug(value)
             this.form.translations[locale].slug = val
           }
         }
       }
-    },
-  },
-
-  async created () {
-    this.$store.dispatch('common/setBreadcrumbs', { breadcrumbs: [
-      { text: this.$t('home'), to: { name: 'dashboard' } },
-      { text: this.$t('pages'), to: { name: 'pages' } },
-    ] })
-    await this.$store.dispatch('api/fetchStatuses')
-
-    let defaultStatuses = this.statuses.filter(item => item.is_default)
-    if (defaultStatuses.length) {
-      this.attributes.status_id = defaultStatuses[0].id
     }
-    this.debouncedGenerateSlug = _.debounce(this.generateSlug, 200)
-    Object.keys(this.form.translations).forEach(locale => {
-      this.$watch(() => this.form.translations[locale].title, this.debouncedGenerateSlug)
-    })
-  },
+  }
 }
 </script>
 

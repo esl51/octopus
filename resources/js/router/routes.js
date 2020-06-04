@@ -18,31 +18,37 @@ export default [
 
   { path: '/admin/pages', name: 'pages', component: page('pages.vue'), meta: { permissions: ['manage pages'] } },
 
-  { path: '/admin/settings',
+  {
+    path: '/admin/settings',
     component: page('settings/index.vue'),
     children: [
       { path: '', name: 'settings', redirect: { name: 'settings.profile' } },
       { path: 'profile', name: 'settings.profile', component: page('settings/profile.vue') },
       { path: 'password', name: 'settings.password', component: page('settings/password.vue') }
-    ] },
+    ]
+  },
 
-  { path: '/admin/directories',
+  {
+    path: '/admin/directories',
     name: 'directories',
     component: page('directories/index.vue'),
     meta: { permissions: ['manage directories'] },
     children: [
-      { path: 'statuses', name: 'directories.statuses', component: page('directories/statuses.vue'), meta: { permissions: ['manage statuses'] } },
-    ] },
+      { path: 'statuses', name: 'directories.statuses', component: page('directories/statuses.vue'), meta: { permissions: ['manage statuses'] } }
+    ]
+  },
 
-  { path: '/admin/access',
+  {
+    path: '/admin/access',
     name: 'access',
     component: page('access/index.vue'),
     meta: { permissions: ['manage users', 'manage access'] },
     children: [
       { path: 'users', name: 'access.users', component: page('access/users.vue'), meta: { permissions: ['manage users'] } },
       { path: 'roles', name: 'access.roles', component: page('access/roles.vue'), meta: { permissions: ['manage access'] } },
-      { path: 'permissions', name: 'access.permissions', component: page('access/permissions.vue'), meta: { permissions: ['manage access'] } },
-    ] },
+      { path: 'permissions', name: 'access.permissions', component: page('access/permissions.vue'), meta: { permissions: ['manage access'] } }
+    ]
+  },
 
   { path: '*', component: page('errors/404.vue') }
 ]

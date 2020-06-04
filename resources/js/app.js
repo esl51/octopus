@@ -11,7 +11,7 @@ import '~/plugins'
 import '~/components'
 
 Vue.use(BootstrapVue)
-Vue.use(FileManager, {store})
+Vue.use(FileManager, { store })
 
 Vue.prototype.$axios = axios
 

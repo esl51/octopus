@@ -4,17 +4,17 @@
     :label-for="id || 'item-' + name"
     :state="form.errors && form.errors.has(name) ? false : null"
     :invalid-feedback="form.errors && form.errors.get(name)"
-    :description="hint">
-
+    :description="hint"
+  >
     <vue-select
+      :id="id || 'item-' + name"
       v-model="form[name]"
       :label="labelAttribute"
       :reduce="item => item[keyAttribute]"
       :options="options"
       :multiple="multiple"
       :components="{ OpenIndicator }"
-      :id="id || 'item-' + name" />
-
+    />
   </b-form-group>
 </template>
 
@@ -26,7 +26,7 @@ export default {
   name: 'VSelect',
 
   components: {
-    VueSelect,
+    VueSelect
   },
 
   props: {
@@ -38,13 +38,13 @@ export default {
     keyAttribute: { type: String, default: 'id' },
     labelAttribute: { type: String, default: 'name' },
     options: { type: Array, default: null },
-    multiple: { type: Boolean, default: false },
+    multiple: { type: Boolean, default: false }
   },
 
   data: () => ({
     OpenIndicator: {
-      render: createElement => createElement('span'),
-    },
-  }),
+      render: createElement => createElement('span')
+    }
+  })
 }
 </script>

@@ -8,6 +8,6 @@ export const control = {
     hint: { type: String, default: null },
     readonly: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
-    autofocus: { type: Boolean, default: false },
-  },
+    autofocus: { type: Boolean, default: false }
+  }
 }

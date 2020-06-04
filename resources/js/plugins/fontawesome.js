@@ -9,7 +9,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 
 library.add(
-  fas, faGithub,
+  fas, faGithub
 )
 
 Vue.component('fa', FontAwesomeIcon)

@@ -1,11 +1,26 @@
 <template>
-  <b-navbar togglable="lg" type="light" class="border-bottom bg-light">
-    <b-button variant="light" @click="toggleSidebar()" class="mr-2 text-muted sidebar-toggle">
+  <b-navbar
+    togglable="lg"
+    type="light"
+    class="border-bottom bg-light"
+  >
+    <b-button
+      variant="light"
+      class="mr-2 text-muted sidebar-toggle"
+      @click="toggleSidebar()"
+    >
       <!--<span class="navbar-toggler-icon"/>-->
-      <fa icon="angle-double-left" fixed-width />
+      <fa
+        icon="angle-double-left"
+        fixed-width
+      />
     </b-button>
-    <b-navbar-toggle target="nav-collapse"/>
-    <b-collapse class="ml-2" id="nav-collapse" is-nav>
+    <b-navbar-toggle target="nav-collapse" />
+    <b-collapse
+      id="nav-collapse"
+      class="ml-2"
+      is-nav
+    >
       <b-navbar-nav>
         <locale-dropdown />
         <!--<b-nav-item-dropdown :text="locales[locale]">
@@ -14,25 +29,50 @@
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
         <!-- Authenticated -->
-        <b-nav-item-dropdown v-if="user" right>
+        <b-nav-item-dropdown
+          v-if="user"
+          right
+        >
           <template slot="button-content">
-            <img :src="user.photo_url" class="rounded-circle profile-photo mr-1">
+            <img
+              :src="user.photo_url"
+              class="rounded-circle profile-photo mr-1"
+            >
             {{ user.name }}
           </template>
           <b-dropdown-item :to="{ name: 'settings.profile' }">
-            <fa icon="cog" fixed-width />
+            <fa
+              icon="cog"
+              fixed-width
+            />
             {{ $t('settings') }}
           </b-dropdown-item>
-          <b-dropdown-divider/>
-          <b-dropdown-item href="#" @click.prevent="logout">
-            <fa icon="sign-out-alt" fixed-width />
+          <b-dropdown-divider />
+          <b-dropdown-item
+            href="#"
+            @click.prevent="logout"
+          >
+            <fa
+              icon="sign-out-alt"
+              fixed-width
+            />
             {{ $t('logout') }}
           </b-dropdown-item>
         </b-nav-item-dropdown>
         <!-- Guest -->
         <template v-else>
-          <b-nav-item :to="{ name: 'login' }" active-class="active">{{ $t('login') }}</b-nav-item>
-          <b-nav-item :to="{ name: 'register' }" active-class="active">{{ $t('register') }}</b-nav-item>
+          <b-nav-item
+            :to="{ name: 'login' }"
+            active-class="active"
+          >
+            {{ $t('login') }}
+          </b-nav-item>
+          <b-nav-item
+            :to="{ name: 'register' }"
+            active-class="active"
+          >
+            {{ $t('register') }}
+          </b-nav-item>
         </template>
       </b-navbar-nav>
     </b-collapse>
@@ -45,20 +85,20 @@ import LocaleDropdown from '~/components/LocaleDropdown'
 
 export default {
 
+  components: {
+    LocaleDropdown
+  },
+
   data: () => ({
     appName: window.config.appName
   }),
-
-  components: {
-    LocaleDropdown,
-  },
 
   computed: mapGetters({
     user: 'auth/user',
     sidebarActive: 'common/sidebarActive',
     locales: 'lang/locales',
     locale: 'lang/locale',
-    fallbackLocale: 'lang/fallbackLocale',
+    fallbackLocale: 'lang/fallbackLocale'
   }),
 
   methods: {

@@ -1,5 +1,8 @@
 <template>
-  <b-card :title="$t('page_not_found')" class="text-center">
+  <b-card
+    :title="$t('page_not_found')"
+    class="text-center"
+  >
     <b-card-text>
       <router-link :to="{ name: 'welcome' }">
         {{ $t('go_home') }}

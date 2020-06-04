@@ -5,14 +5,14 @@ import * as types from '../mutation-types'
 export const state = {
   permissions: null,
   roles: null,
-  statuses: null,
+  statuses: null
 }
 
 // getters
 export const getters = {
   permissions: state => state.permissions,
   roles: state => state.roles,
-  statuses: state => state.statuses,
+  statuses: state => state.statuses
 }
 
 // mutations
@@ -26,7 +26,7 @@ export const mutations = {
   },
   [types.FETCH_STATUSES] (state, { statuses }) {
     state.statuses = statuses
-  },
+  }
 }
 
 // actions
@@ -43,5 +43,5 @@ export const actions = {
   async fetchStatuses ({ commit }) {
     const { data } = await axios.get('/api/statuses', { params: { per_page: 9999 } })
     commit(types.FETCH_STATUSES, { statuses: data.data })
-  },
+  }
 }

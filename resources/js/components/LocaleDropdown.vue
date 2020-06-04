@@ -1,6 +1,13 @@
 <template>
   <b-nav-item-dropdown :text="locales[locale]">
-    <b-dropdown-item v-for="(value, key) in locales" :key="key" href="#" @click.prevent="setLocale(key)">{{ value }}</b-dropdown-item>
+    <b-dropdown-item
+      v-for="(value, key) in locales"
+      :key="key"
+      href="#"
+      @click.prevent="setLocale(key)"
+    >
+      {{ value }}
+    </b-dropdown-item>
   </b-nav-item-dropdown>
 </template>
 
@@ -20,7 +27,7 @@ export default {
         loadMessages(locale)
 
         this.$store.dispatch('lang/setLocale', { locale })
-        this.$router.go(this.$router.currentRoute);
+        this.$router.go(this.$router.currentRoute)
       }
     }
   }

@@ -3,14 +3,14 @@
     :label="label"
     :label-for="id || 'item-' + name"
     :invalid-feedback="form.errors && form.errors.get(name)"
-    :description="hint">
-
+    :description="hint"
+  >
     <b-form-checkbox-group
+      :id="id || 'item-' + name"
       v-model="form[name]"
       :options="options.map(item => ({ text: item[labelAttribute], value: item[keyAttribute] }))"
       :state="form.errors && form.errors.has(name) ? false : null"
-      :id="id || 'item-' + name" />
-
+    />
   </b-form-group>
 </template>
 
@@ -25,7 +25,7 @@ export default {
     name: { type: String, default: null },
     keyAttribute: { type: String, default: 'id' },
     labelAttribute: { type: String, default: 'name' },
-    options: { type: Array, default: null },
+    options: { type: Array, default: null }
   }
 }
 </script>

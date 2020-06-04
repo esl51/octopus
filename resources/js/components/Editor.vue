@@ -3,14 +3,14 @@
     :label="label"
     :label-for="id || 'item-' + name"
     :invalid-feedback="form.errors && form.errors.get(name)"
-    :description="hint">
-
-      <jodit-vue
-        v-model="form.translations[locale][name]"
-        :id="id || name"
-        :config="editorConfig"
-        :buttons="editorButtons" />
-
+    :description="hint"
+  >
+    <jodit-vue
+      :id="id || name"
+      v-model="form.translations[locale][name]"
+      :config="editorConfig"
+      :buttons="editorButtons"
+    />
   </b-form-group>
 </template>
 
@@ -21,39 +21,39 @@ import { JoditVue } from 'jodit-vue'
 
 export default {
   name: 'VEditor',
-  mixins: [control],
 
   components: {
-    JoditVue,
+    JoditVue
   },
+  mixins: [control],
 
   data: () => ({
-    editorButtons: ['undo','redo','paragraph','|','bold','italic','underline','strikethrough','align','|','table','link','hr','|','ul','ol','|','superscript','subscript','|','image','file','video','|','eraser','fullsize','source'],
+    editorButtons: ['undo', 'redo', 'paragraph', '|', 'bold', 'italic', 'underline', 'strikethrough', 'align', '|', 'table', 'link', 'hr', '|', 'ul', 'ol', '|', 'superscript', 'subscript', '|', 'image', 'file', 'video', '|', 'eraser', 'fullsize', 'source'],
     editorConfig: {
       controls: {
         paragraph: {
           list: {
-            p: 'Normal',
-          },
-        },
+            p: 'Normal'
+          }
+        }
       },
-      defaultActionOnPaste: "insert_clear_html",
+      defaultActionOnPaste: 'insert_clear_html',
       filebrowser: {
         ajax: {
-          url: '/api/jodit/',
-        },
+          url: '/api/jodit/'
+        }
       },
       uploader: {
-        url: '/api/jodit/?action=fileUpload',
-      },
-    },
+        url: '/api/jodit/?action=fileUpload'
+      }
+    }
   }),
 
   created () {
     this.editorConfig.autofocus = this.autofocus
     this.editorConfig.disabled = this.disabled
     this.editorConfig.readonly = this.readonly
-  },
+  }
 }
 </script>
 

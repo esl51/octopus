@@ -1,14 +1,14 @@
 <template>
   <v-select
+    :id="id"
     :label="label"
     :hint="hint"
     :form="form"
-    :id="id"
     :name="name"
     key-attribute="name"
     label-attribute="name"
     :options="options"
-    name="variant" />
+  />
 </template>
 
 <script>
@@ -21,7 +21,7 @@ export default {
     form: { type: Object, default: null },
     id: { type: String, default: null },
     name: { type: String, default: null },
-    multiple: { type: Boolean, default: false },
+    multiple: { type: Boolean, default: false }
   },
 
   data: () => ({
@@ -32,8 +32,8 @@ export default {
       { name: 'info' },
       { name: 'warning' },
       { name: 'danger' },
-      { name: 'dark' },
-    ],
-  }),
+      { name: 'dark' }
+    ]
+  })
 }
 </script>

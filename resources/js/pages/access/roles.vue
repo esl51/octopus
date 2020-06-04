@@ -1,47 +1,59 @@
 <template>
   <div>
-    <h2 class="my-3">{{ $t('roles') }}</h2>
+    <h2 class="my-3">
+      {{ $t('roles') }}
+    </h2>
 
     <!-- Filters -->
-    <b-input-group size="sm" class="my-3">
-
+    <b-input-group
+      size="sm"
+      class="my-3"
+    >
       <b-input-group-prepend>
-
         <!-- Add -->
-        <b-button v-b-tooltip.hover
-          @click="addItem()"
+        <b-button
+          v-b-tooltip.hover
           :title="$t('add')"
-          variant="success">
-          <fa icon="plus" fixed-width />
+          variant="success"
+          @click="addItem()"
+        >
+          <fa
+            icon="plus"
+            fixed-width
+          />
           <span class="d-none d-md-inline">{{ $t('add') }}</span>
         </b-button>
-
       </b-input-group-prepend>
 
       <!-- Search -->
       <b-form-input
+        id="filterInput"
         v-model="search"
         type="search"
-        id="filterInput"
         :debounce="200"
-        :placeholder="$t('search')" />
+        :placeholder="$t('search')"
+      />
 
       <b-input-group-append>
-
         <!-- Refresh -->
-        <b-button v-b-tooltip.hover
+        <b-button
+          v-b-tooltip.hover
+          :title="$t('refresh')"
           @click="refreshItems()"
-          :title="$t('refresh')">
-          <fa icon="sync" fixed-width />
+        >
+          <fa
+            icon="sync"
+            fixed-width
+          />
         </b-button>
-
       </b-input-group-append>
-
     </b-input-group>
 
     <!-- Items -->
-    <b-table small stacked="sm"
+    <b-table
       ref="items"
+      small
+      stacked="sm"
       :api-url="apiUrl"
       :items="fetchItems"
       :fields="fields"
@@ -51,35 +63,35 @@
       :sort-by.sync="sortBy"
       :sort-desc.sync="sortDesc"
       :sort-direction="sortDirection"
-      :filter="search">
-
+      :filter="search"
+    >
       <template v-slot:cell(actions)="data">
-
         <!-- View -->
         <action-button
-          @click.native="viewItem(data.item)"
           :title="$t('view')"
           class="mr-2"
-          icon="eye" />
+          icon="eye"
+          @click.native="viewItem(data.item)"
+        />
 
         <!-- Edit -->
         <action-button
-          @click.native="editItem(data.item)"
           :disabled="!data.item.is_editable"
           :title="$t('edit')"
           class="mr-2"
-          icon="edit" />
+          icon="edit"
+          @click.native="editItem(data.item)"
+        />
 
         <!-- Trash -->
         <action-button
-          @click.native="trashItem(data.item)"
           :disabled="!data.item.is_deletable"
           :title="$t('edit')"
           class="text-danger"
-          icon="trash-alt" />
-
+          icon="trash-alt"
+          @click.native="trashItem(data.item)"
+        />
       </template>
-
     </b-table>
 
     <!-- Pagination -->
@@ -90,41 +102,50 @@
       :per-page="perPage"
       align="right"
       size="sm"
-      class="my-0" />
+      class="my-0"
+    />
 
     <!-- View -->
-    <b-modal centered ok-only
+    <b-modal
       id="itemView"
-      :title="item.name">
-
-      <b-table small stacked
+      centered
+      ok-only
+      :title="item.name"
+    >
+      <b-table
+        small
+        stacked
         :items="[item]"
         :fields="fields.filter(field => field.key != 'actions')"
-        class="table-view" />
-
+        class="table-view"
+      />
     </b-modal>
 
     <!-- Form -->
-    <b-modal centered
+    <b-modal
       id="itemModal"
-      :title="(item && item.name) || $t('role')">
-
+      centered
+      :title="(item && item.name) || $t('role')"
+    >
       <b-form
         ref="itemForm"
         @submit.prevent="item && item.id ? updateItem() : createItem()"
-        @keydown="form.onKeydown($event)">
-
+        @keydown="form.onKeydown($event)"
+      >
         <!-- Name -->
-        <v-input autofocus
+        <v-input
+          autofocus
           :label="$t('name')"
           :form="form"
-          name="name" />
+          name="name"
+        />
 
         <!-- Guard name -->
         <v-input
           :label="$t('guard_name')"
           :form="form"
-          name="guard_name" />
+          name="guard_name"
+        />
 
         <!-- Permissions -->
         <v-checkboxes
@@ -132,27 +153,28 @@
           :options="permissions"
           :form="form"
           name="permissions"
-          label-attribute="name" />
+          label-attribute="name"
+        />
 
-        <b-button v-show="false" ref="itemSubmit" type="submit" />
-
+        <b-button
+          v-show="false"
+          ref="itemSubmit"
+          type="submit"
+        />
       </b-form>
 
-       <template slot="modal-footer">
-
+      <template slot="modal-footer">
         <!-- Submit -->
         <b-button
-          @click="$refs.itemSubmit.click()"
           :disabled="form.busy"
           :variant="item && item.id ? 'primary' : 'success'"
-          :class="{ 'btn-loading': form.busy }">
+          :class="{ 'btn-loading': form.busy }"
+          @click="$refs.itemSubmit.click()"
+        >
           {{ item && item.id ? $t('update') : $t('create') }}
         </b-button>
-
-       </template>
-
+      </template>
     </b-modal>
-
   </div>
 </template>
 
@@ -170,7 +192,7 @@ export default {
 
   data: () => ({
     apiUrl: '/api/access/roles/',
-    attributes: { name: '', guard_name: 'api', permissions: [] },
+    attributes: { name: '', guard_name: 'api', permissions: [] }
   }),
 
   computed: {
@@ -179,17 +201,17 @@ export default {
     }),
     fields () {
       return [
-        { key: 'id', label: this.$t('id'), sortable: true, },
-        { key: 'name', label: this.$t('name'), sortable: true, },
-        { key: 'guard_name', label: this.$t('guard_name'), sortable: true, },
-        { key: 'permissions', label: this.$t('permissions'), sortable: false, formatter: value => value.map(permission => permission.name).join(", ") },
-        { key: 'actions', label: '', tdClass: 'table-actions', },
+        { key: 'id', label: this.$t('id'), sortable: true },
+        { key: 'name', label: this.$t('name'), sortable: true },
+        { key: 'guard_name', label: this.$t('guard_name'), sortable: true },
+        { key: 'permissions', label: this.$t('permissions'), sortable: false, formatter: value => value.map(permission => permission.name).join(', ') },
+        { key: 'actions', label: '', tdClass: 'table-actions' }
       ]
     }
   },
 
   created () {
-    this.$store.dispatch('api/fetchPermissions');
-  },
+    this.$store.dispatch('api/fetchPermissions')
+  }
 }
 </script>

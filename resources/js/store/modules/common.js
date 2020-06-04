@@ -3,14 +3,14 @@ import * as types from '../mutation-types'
 
 // state
 export const state = {
-  sidebarActive: Cookies.get('sidebarActive') == 'true' || false,
-  breadcrumbs: [],
+  sidebarActive: Cookies.get('sidebarActive') === 'true' || false,
+  breadcrumbs: []
 }
 
 // getters
 export const getters = {
   sidebarActive: state => state.sidebarActive,
-  breadcrumbs: state => state.breadcrumbs,
+  breadcrumbs: state => state.breadcrumbs
 }
 
 // mutations

@@ -1,8 +1,13 @@
 <template>
   <div>
-    <h1 class="mb-4">{{ $t('settings') }}</h1>
+    <h1 class="mb-4">
+      {{ $t('settings') }}
+    </h1>
     <tabs :items="tabs" />
-    <transition name="fade" mode="out-in">
+    <transition
+      name="fade"
+      mode="out-in"
+    >
       <div class="nav-tabs-content">
         <router-view />
       </div>
@@ -20,22 +25,24 @@ export default {
         {
           icon: 'user',
           name: this.$t('profile'),
-          route: { name: 'settings.profile' },
+          route: { name: 'settings.profile' }
         },
         {
           icon: 'lock',
           name: this.$t('password'),
-          route: { name: 'settings.password' },
+          route: { name: 'settings.password' }
         }
       ]
     }
   },
 
   created () {
-    this.$store.dispatch('common/setBreadcrumbs', { breadcrumbs: [
-      { text: this.$t('home'), to: { name: 'dashboard' } },
-      { text: this.$t('settings'), to: { name: 'settings' } },
-    ] })
-  },
+    this.$store.dispatch('common/setBreadcrumbs', {
+      breadcrumbs: [
+        { text: this.$t('home'), to: { name: 'dashboard' } },
+        { text: this.$t('settings'), to: { name: 'settings' } }
+      ]
+    })
+  }
 }
 </script>

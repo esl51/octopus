@@ -3,20 +3,32 @@
     <div class="col-lg-8 m-auto">
       <b-card :title="$t('verify_email')">
         <template v-if="success">
-          <div class="alert alert-success" role="alert">
+          <div
+            class="alert alert-success"
+            role="alert"
+          >
             {{ success }}
           </div>
 
-          <router-link :to="{ name: 'login' }" class="btn btn-primary">
+          <router-link
+            :to="{ name: 'login' }"
+            class="btn btn-primary"
+          >
             {{ $t('login') }}
           </router-link>
         </template>
         <template v-else>
-          <div class="alert alert-danger" role="alert">
+          <div
+            class="alert alert-danger"
+            role="alert"
+          >
             {{ error || $t('failed_to_verify_email') }}
           </div>
 
-          <router-link :to="{ name: 'verification.resend' }" class="small float-right">
+          <router-link
+            :to="{ name: 'verification.resend' }"
+            class="small float-right"
+          >
             {{ $t('resend_verification_link') }}
           </router-link>
         </template>

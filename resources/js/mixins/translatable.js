@@ -1,3 +1,4 @@
+/* global config */
 import { mapGetters } from 'vuex'
 
 export const translatable = {
@@ -8,13 +9,13 @@ export const translatable = {
 
   data: () => ({
     fallbackLocale: config.fallbackLocale,
-    currentLocale: config.fallbackLocale,
+    currentLocale: config.fallbackLocale
   }),
 
   methods: {
 
     hasErrors (locale) {
-      if (locale == undefined) {
+      if (locale === undefined) {
         let hasErrors = false
         Object.keys(this.locales).forEach(locale => {
           if (this.form.errors.has(this.getName(locale))) {
@@ -27,8 +28,8 @@ export const translatable = {
     },
 
     getErrors (locale) {
-      if (locale == undefined) {
-        let errors = []
+      if (locale === undefined) {
+        const errors = []
         Object.keys(this.locales).forEach(locale => {
           if (this.form.errors.has(this.getName(locale))) {
             errors.push(...this.form.errors.getAll(this.getName(locale)).map(item => '(' + locale + ') ' + item))
@@ -40,9 +41,9 @@ export const translatable = {
     },
 
     getStates () {
-      let states = {}
+      const states = {}
       Object.keys(this.locales).forEach(locale => {
-        states[locale] = this.form.errors.has(this.getName(locale)) ? false : true
+        states[locale] = !this.form.errors.has(this.getName(locale))
       })
       return states
     },
@@ -54,9 +55,9 @@ export const translatable = {
     changeLocale (locale) {
       this.currentLocale = locale
       this.$nextTick(() => {
-        this.$refs["input-" + locale][0].focus()
+        this.$refs['input-' + locale][0].focus()
       })
-    },
+    }
 
-  },
+  }
 }

@@ -1,15 +1,32 @@
 <template>
   <div>
-    <h2 class="my-3">{{ $t('profile') }}</h2>
-    <form @submit.prevent="update" @keydown="form.onKeydown($event)">
-      <alert-success :form="form" :message="$t('info_updated')" />
+    <h2 class="my-3">
+      {{ $t('profile') }}
+    </h2>
+    <form
+      @submit.prevent="update"
+      @keydown="form.onKeydown($event)"
+    >
+      <alert-success
+        :form="form"
+        :message="$t('info_updated')"
+      />
 
       <!-- Name -->
       <div class="form-group row">
         <label class="col-md-3 col-form-label text-md-right">{{ $t('name') }}</label>
         <div class="col-md-6">
-          <input v-model="form.name" :class="{ 'is-invalid': form.errors.has('name') }" class="form-control" type="text" name="name">
-          <has-error :form="form" field="name" />
+          <input
+            v-model="form.name"
+            :class="{ 'is-invalid': form.errors.has('name') }"
+            class="form-control"
+            type="text"
+            name="name"
+          >
+          <has-error
+            :form="form"
+            field="name"
+          />
         </div>
       </div>
 
@@ -17,15 +34,27 @@
       <div class="form-group row">
         <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
         <div class="col-md-6">
-          <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email">
-          <has-error :form="form" field="email" />
+          <input
+            v-model="form.email"
+            :class="{ 'is-invalid': form.errors.has('email') }"
+            class="form-control"
+            type="email"
+            name="email"
+          >
+          <has-error
+            :form="form"
+            field="email"
+          />
         </div>
       </div>
 
       <!-- Submit Button -->
       <div class="form-group row">
         <div class="col-md-9 ml-md-auto">
-          <v-button :loading="form.busy" type="success">
+          <v-button
+            :loading="form.busy"
+            type="success"
+          >
             {{ $t('update') }}
           </v-button>
         </div>

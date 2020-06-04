@@ -1,0 +1,49 @@
+.vs__dropdown-toggle {
+  @extend .form-control;
+  background: $custom-select-background;
+  display: flex;
+}
+.vs__actions {
+  padding-top: 0;
+}
+.vs__clear {
+  display: flex;
+
+  svg path {
+    fill: #343a40;
+  }
+}
+.vs__selected-options {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: -8px;
+  align-items: center;
+  margin-top: -4px;
+}
+.vs__selected {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-right: 6px;
+  padding-left: 6px;
+}
+.vs__search, .vs__search:focus {
+  margin-bottom: 4px;
+}
+.vs--open .vs__dropdown-toggle {
+  color: $input-focus-color;
+  background-color: $input-focus-bg;
+  border-color: $input-focus-border-color;
+  border-bottom-left-radius: $input-border-radius;
+  border-bottom-right-radius: $input-border-radius;
+  outline: 0;
+  // Avoid using mixin so we can pass custom focus shadow properly
+  @if $enable-shadows {
+    box-shadow: $input-box-shadow, $input-focus-box-shadow;
+  } @else {
+    box-shadow: $input-focus-box-shadow;
+  }
+}
+.vs__dropdown-menu {
+  padding-top: 0;
+  padding-bottom: 0;
+}

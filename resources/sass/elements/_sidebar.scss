@@ -1,0 +1,145 @@
+body {
+  overflow-x: hidden;
+  margin-bottom: 0 !important;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+
+  &.toggled {
+
+    .sidebar-children {
+      display: none;
+    }
+  }
+
+  &:not(.toggled) {
+
+    .list-group-item {
+
+      &.collapsed {
+        border-bottom-color: transparent;
+      }
+    }
+  }
+}
+
+.sidebar-wrapper {
+  transition: all .25s ease-out;
+  overflow-x: hidden;
+  flex: 0 0 15rem;
+
+  .sidebar-heading {
+    transition: all .25s ease-out;
+    display: flex;
+    align-items: center;
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+    width: 15rem;
+
+    .svg-inline--fa {
+      width: 1.25rem;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .sidebar-heading-title,
+  .sidebar-item-title {
+    margin-left: 1.25rem;
+  }
+  .list-group {
+    transition: all .25s ease-out;
+    width: 15rem;
+  }
+  .list-group-item {
+    display: flex;
+
+    .svg-inline--fa {
+      width: 1.25rem;
+      margin-top: .25em;
+    }
+    &.active {
+      border-color: rgba(0, 0, 0, 0.125);
+    }
+  }
+  .sidebar-children {
+
+    .list-group-item {
+      padding-left: 2.25rem;
+      padding-top: .2rem;
+      padding-bottom: .2rem;
+      border-top: none;
+      border-bottom: none;
+    }
+
+    &:not(:last-child) {
+      .list-group-item:last-child {
+        padding-bottom: .7rem;
+      }
+    }
+  }
+}
+
+.page-content-wrapper {
+  overflow-y: auto;
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+
+  .wrapper {
+
+    &.toggled {
+
+      .sidebar-wrapper {
+        margin-left: -15rem;
+      }
+    }
+  }
+
+  .page-content-wrapper {
+    width: 100vw;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .wrapper {
+
+    &.toggled {
+
+      .sidebar-wrapper {
+        flex-basis: 3.75rem;
+      }
+    }
+  }
+
+  .page-content-wrapper {
+    flex: 1 1 auto;
+    overflow-y: auto;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+  .wrapper {
+
+    &.toggled {
+
+      .sidebar-wrapper {
+
+        &:hover {
+          transition-delay: .25s;
+          flex-basis: 15rem;
+
+          .sidebar-children {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

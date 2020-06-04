@@ -1,0 +1,38 @@
+.nav-tabs {
+  flex-wrap: nowrap;
+  overflow: hidden;
+  overflow-x: auto;
+  border-bottom: none;
+  position: relative;
+  padding-bottom: 3px;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 100%;
+    height: 1px;
+    background-color: #dee2e6;
+  }
+
+  .nav-item {
+    margin-left: -1px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .nav-link {
+    white-space: nowrap;
+    border-bottom-color: #dee2e6;
+
+    &.active {
+      position: relative;
+      z-index: 1;
+      border-bottom-color: #fff;
+    }
+  }
+}

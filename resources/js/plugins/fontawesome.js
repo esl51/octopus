@@ -12,4 +12,4 @@ library.add(
   fas, faGithub
 )
 
-Vue.component('fa', FontAwesomeIcon)
+Vue.component('Fa', FontAwesomeIcon)

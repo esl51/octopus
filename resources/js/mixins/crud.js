@@ -1,6 +1,6 @@
 /* global config */
 import Form from 'vform'
-import { objectToFormData } from 'object-to-formdata'
+import { serialize } from 'object-to-formdata'
 import { mapGetters } from 'vuex'
 
 export const crud = {
@@ -137,7 +137,7 @@ export const crud = {
     async createItem () {
       const { data } = await this.form.submit('post', this.apiUrl, {
         transformRequest: [(data, headers) => {
-          return objectToFormData(data, { indices: true })
+          return serialize(data, { indices: true })
         }]
       })
       this.item = data.data
@@ -156,7 +156,7 @@ export const crud = {
       const { data } = await this.form.submit('post', this.apiUrl + this.item.id, {
         transformRequest: [(data, headers) => {
           data._method = 'PUT'
-          return objectToFormData(data, { indices: true })
+          return serialize(data, { indices: true })
         }]
       })
       this.item = data.data

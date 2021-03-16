@@ -4,12 +4,11 @@ namespace App\Http\Controllers\Access;
 
 use App\Http\Controllers\ItemController;
 use App\Http\Resources\Access\UserResource;
-use App\Role;
-use App\User;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
 
 class UserController extends ItemController
 {
@@ -141,5 +140,19 @@ class UserController extends ItemController
         $user->delete();
 
         return response()->json(null, 204);
+    }
+
+    /**
+     * Get authenticated user.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function current(Request $request)
+    {
+        $user = $request->user();
+        $user->append('can', 'all_permissions');
+        $user->makeVisible('roles');
+        return response()->json($user);
     }
 }

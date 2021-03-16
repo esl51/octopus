@@ -4,7 +4,9 @@
     :label-for="id || 'item-' + name"
     :invalid-feedback="form.errors && form.errors.get(name)"
     :description="hint"
+    label-class="form-label"
   >
+    <slot name="label" slot="label" />
     <b-form-input
       :id="id || 'item-' + name"
       v-model="form[name]"

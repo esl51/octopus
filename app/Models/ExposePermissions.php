@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;

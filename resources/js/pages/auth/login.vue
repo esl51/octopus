@@ -1,81 +1,60 @@
 <template>
-  <div class="row">
-    <div class="col-lg-8 m-auto">
-      <b-card :title="$t('login')">
-        <form
-          @submit.prevent="login"
-          @keydown="form.onKeydown($event)"
+  <div class="container-tight py-6">
+    <div class="text-center mb-4">
+      <h1>octopus</h1>
+    </div>
+    <b-card class="card-md">
+      <form
+        @submit.prevent="login"
+        @keydown="form.onKeydown($event)"
+      >
+        <h2 class="mb-5 text-center">{{ $t('login') }}</h2>
+        <v-input
+          :label="$t('email')"
+          :form="form"
+          class="mb-3"
+          name="email"
+          type="email"
+        />
+        <v-input
+          :label="$t('password')"
+          :form="form"
+          class="mb-2"
+          name="password"
+          type="password"
         >
-          <!-- Email -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
-            <div class="col-md-7">
-              <input
-                v-model="form.email"
-                :class="{ 'is-invalid': form.errors.has('email') }"
-                class="form-control"
-                type="email"
-                name="email"
-              >
-              <has-error
-                :form="form"
-                field="email"
-              />
-            </div>
-          </div>
-
-          <!-- Password -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('password') }}</label>
-            <div class="col-md-7">
-              <input
-                v-model="form.password"
-                :class="{ 'is-invalid': form.errors.has('password') }"
-                class="form-control"
-                type="password"
-                name="password"
-              >
-              <has-error
-                :form="form"
-                field="password"
-              />
-            </div>
-          </div>
-
-          <!-- Remember Me -->
-          <div class="form-group row">
-            <div class="col-md-3" />
-            <div class="col-md-7 d-flex">
-              <b-form-checkbox
-                v-model="remember"
-                name="remember"
-              >
-                {{ $t('remember_me') }}
-              </b-form-checkbox>
-
-              <router-link
-                :to="{ name: 'password.request' }"
-                class="small ml-auto my-auto"
-              >
+          <template v-slot:label>
+            {{ $t('password') }}
+            <span class="form-label-description">
+              <router-link :to="{ name: 'password.request' }">
                 {{ $t('forgot_password') }}
               </router-link>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <div class="col-md-7 offset-md-3 d-flex">
-              <!-- Submit Button -->
-              <v-button :loading="form.busy">
-                {{ $t('login') }}
-              </v-button>
-
-              <!-- GitHub Login Button -->
-              <login-with-github />
-            </div>
-          </div>
-        </form>
-      </b-card>
-    </div>
+            </span>
+          </template>
+        </v-input>
+        <div class="mb-2">
+          <label class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              v-model="remember"
+              name="remember"
+            >
+            <span class="form-check-label">{{ $t('remember_me') }}</span>
+          </label>
+        </div>
+        <div class="form-footer">
+          <b-button
+            block
+            type="submit"
+            variant="primary"
+          >
+            <span class="spinner-border spinner-border-sm mr-2" role="status" v-if="form.busy"></span>
+            {{ $t('login') }}
+          </b-button>
+        </div>
+      </form>
+    </b-card>
   </div>
 </template>
 

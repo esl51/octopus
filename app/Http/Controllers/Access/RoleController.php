@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Access;
 
 use App\Http\Controllers\ItemController;
 use App\Http\Resources\Access\RoleResource;
-use App\Role;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class RoleController extends ItemController

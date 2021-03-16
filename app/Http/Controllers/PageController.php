@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\ItemController;
 use App\Http\Resources\PageResource;
-use App\Page;
+use App\Models\Page;
 use App\Rules\Slug;
-use App\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 

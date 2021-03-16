@@ -1,9 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Notifications\ResetPassword;
 use App\Notifications\VerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,7 +25,11 @@ use Roquie\LaravelPerPageResolver\PerPageResolverTrait;
  */
 class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 {
-    use Notifiable, HasRoles, ExposePermissions, PerPageResolverTrait;
+    use Notifiable,
+        HasFactory,
+        HasRoles,
+        ExposePermissions,
+        PerPageResolverTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -76,7 +81,10 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
      */
     public function getPhotoUrlAttribute()
     {
-        return 'https://www.gravatar.com/avatar/'.md5(strtolower($this->email)).'.jpg?s=200&d=mm';
+        return vsprintf('https://www.gravatar.com/avatar/%s.jpg?s=200&d=%s', [
+            md5(strtolower($this->email)),
+            $this->name ? urlencode("https://ui-avatars.com/api/$this->name") : 'mp',
+        ]);
     }
 
     public function getIsDeletableAttribute()

@@ -1,6 +1,8 @@
 <?php
 
-use App\Status;
+namespace Database\Seeders;
+
+use App\Models\Status;
 use Illuminate\Database\Seeder;
 
 class StatusesTableSeeder extends Seeder

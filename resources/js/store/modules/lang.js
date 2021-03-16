@@ -5,7 +5,7 @@ const { locale, locales, fallbackLocale } = window.config
 
 // state
 export const state = {
-  locale: Cookies.get('locale') || locale,
+  locale: getLocale(locales, locale),
   locales: locales,
   fallbackLocale: fallbackLocale
 }
@@ -31,4 +31,21 @@ export const actions = {
 
     Cookies.set('locale', locale, { expires: 365 })
   }
+}
+
+/**
+ * @param  {String[]} locales
+ * @param  {String} fallback
+ * @return {String}
+ */
+function getLocale (locales, fallback) {
+  const locale = Cookies.get('locale')
+
+  if (Object.prototype.hasOwnProperty.call(locales, locale)) {
+    return locale
+  } else if (locale) {
+    Cookies.remove('locale')
+  }
+
+  return fallback
 }

@@ -2,10 +2,10 @@
 
 namespace Tests\Browser;
 
-use App\User;
-use Tests\DuskTestCase;
+use App\Models\User;
 use Tests\Browser\Pages\Home;
 use Tests\Browser\Pages\Register;
+use Tests\DuskTestCase;
 
 class RegisterTest extends DuskTestCase
 {
@@ -34,7 +34,7 @@ class RegisterTest extends DuskTestCase
     /** @test */
     public function can_not_register_with_the_same_twice()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->browse(function ($browser) use ($user) {
             $browser->visit(new Register)

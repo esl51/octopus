@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Access;
 
 use App\Http\Controllers\ItemController;
 use App\Http\Resources\Access\PermissionResource;
-use App\Permission;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 
 class PermissionController extends ItemController

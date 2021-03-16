@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\JoditRestApplication;
+use App\Models\JoditRestApplication;
 use Illuminate\Http\Request;
 
 class JoditController extends Controller

@@ -4,7 +4,6 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Arr;
-use Illuminate\Validation\Validator;
 
 class Slug implements Rule
 {

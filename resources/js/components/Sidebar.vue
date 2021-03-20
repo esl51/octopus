@@ -36,13 +36,13 @@
         <b-collapse
           v-if="item.children && item.children.length"
           :id="'sidebar-item-children-' + index"
-          :key="index"
+          :key="'item-' + index"
           v-model="item.expanded"
           class="sidebar-children"
         >
           <b-list-group-item
             v-for="(child, cindex) in item.children"
-            :key="cindex"
+            :key="'child-' + index + '-' + cindex"
             action
             :to="child.to ? child.to : null"
             variant="light"

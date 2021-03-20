@@ -95,13 +95,13 @@
           @click.native="editItem(data.item)"
         />
 
-        <!-- Trash -->
+        <!-- Delete -->
         <action-button
           :disabled="!data.item.is_deletable"
-          :title="$t('edit')"
+          :title="$t('delete')"
           class="text-danger"
           icon="trash-alt"
-          @click.native="trashItem(data.item)"
+          @click.native="deleteItem(data.item)"
         />
       </template>
     </b-table>

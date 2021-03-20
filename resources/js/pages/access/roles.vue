@@ -65,7 +65,7 @@
       :sort-direction="sortDirection"
       :filter="search"
     >
-      <template v-slot:cell(actions)="data">
+      <template #cell(actions)="data">
         <!-- View -->
         <action-button
           :title="$t('view')"
@@ -183,8 +183,8 @@ import { crud } from '~/mixins/crud'
 import { mapGetters } from 'vuex'
 
 export default {
-  middleware: ['auth', 'acl'],
   mixins: [crud],
+  middleware: ['auth', 'acl'],
 
   metaInfo () {
     return { title: this.$t('roles') }

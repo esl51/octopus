@@ -43,12 +43,6 @@ import axios from 'axios'
 const qs = (params) => Object.keys(params).map(key => `${key}=${params[key]}`).join('&')
 
 export default {
-  middleware: 'guest',
-  layout: 'basic',
-
-  metaInfo () {
-    return { title: this.$t('verify_email') }
-  },
 
   async beforeRouteEnter (to, from, next) {
     try {
@@ -58,6 +52,12 @@ export default {
     } catch (e) {
       next(vm => { vm.error = e.response.data.status })
     }
+  },
+  layout: 'basic',
+  middleware: 'guest',
+
+  metaInfo () {
+    return { title: this.$t('verify_email') }
   },
 
   data: () => ({

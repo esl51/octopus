@@ -45,20 +45,25 @@ export default {
   height: 800px;
   padding: 0;
 }
+
 .fm .fm-body {
   border-bottom-color: $gray-300;
   border-top: none;
 }
+
 .fm-info-block {
   border-bottom: none;
   padding-top: 0.5rem;
 }
+
 .fm-tree {
   border-right-color: $gray-300;
 }
+
 .fm-modal {
   z-index: 1040;
 }
+
 .fm-breadcrumb .breadcrumb.active-manager {
   background-color: $gray-200;
 }

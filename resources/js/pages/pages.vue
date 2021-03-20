@@ -65,7 +65,7 @@
       :sort-direction="sortDirection"
       :filter="search"
     >
-      <template v-slot:cell(status)="data">
+      <template #cell(status)="data">
         <div class="d-flex align-items-center">
           <div
             v-if="data.item.status.variant"
@@ -76,7 +76,7 @@
         </div>
       </template>
 
-      <template v-slot:cell(actions)="data">
+      <template #cell(actions)="data">
         <!-- View -->
         <action-button
           :title="$t('view')"
@@ -274,8 +274,8 @@ import { mapGetters } from 'vuex'
 import _ from 'lodash'
 
 export default {
-  middleware: ['auth', 'acl'],
   mixins: [crud],
+  middleware: ['auth', 'acl'],
 
   metaInfo () {
     return { title: this.$t('pages') }
@@ -369,18 +369,19 @@ export default {
 
 <style>
 .refresh-slug {
-  transition: all .25s linear;
+  transition: all 0.25s linear;
   position: absolute;
   display: flex;
   align-items: center;
   height: 24px;
   width: auto;
-  padding: 0 .25rem;
+  padding: 0 0.25rem;
   top: 0;
   right: 0;
 }
+
 .refresh-slug.busy {
-  animation: spinAround .5s infinite linear;
+  animation: spinAround 0.5s infinite linear;
 }
 
 </style>

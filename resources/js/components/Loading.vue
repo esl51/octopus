@@ -90,9 +90,9 @@ export default {
 <style scoped>
 .progress {
   position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 2px;
   width: 0%;
   transition: width 0.2s, opacity 0.4s;

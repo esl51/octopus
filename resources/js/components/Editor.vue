@@ -61,20 +61,24 @@ export default {
 .jodit_toolbar_btn-h1 {
   display: none !important;
 }
+
 .jodit_wysiwyg img[style*="float: left"] {
   margin-right: 15px;
   margin-bottom: 15px;
 }
+
 .jodit_wysiwyg img[style*="float: right"] {
   margin-left: 15px;
   margin-bottom: 15px;
 }
+
 .jodit_wysiwyg [data-jodit_iframe_wrapper] {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   width: auto !important;
   height: 0 !important;
 }
+
 .jodit_wysiwyg [data-jodit_iframe_wrapper] iframe {
   position: absolute;
   top: 0;

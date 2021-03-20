@@ -66,13 +66,13 @@
       :filter="search"
     >
       <!-- Email -->
-      <template v-slot:cell(email)="data">
+      <template #cell(email)="data">
         <a :href="'mailto:' + data.item.email">
           {{ data.item.email }}
         </a>
       </template>
 
-      <template v-slot:cell(actions)="data">
+      <template #cell(actions)="data">
         <!-- View -->
         <action-button
           :title="$t('view')"
@@ -215,8 +215,8 @@ import { crud } from '~/mixins/crud'
 import { mapGetters } from 'vuex'
 
 export default {
-  middleware: ['auth', 'acl'],
   mixins: [crud],
+  middleware: ['auth', 'acl'],
 
   metaInfo () {
     return { title: this.$t('users') }

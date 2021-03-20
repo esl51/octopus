@@ -8,7 +8,9 @@
         @submit.prevent="login"
         @keydown="form.onKeydown($event)"
       >
-        <h2 class="mb-5 text-center">{{ $t('login') }}</h2>
+        <h2 class="mb-5 text-center">
+          {{ $t('login') }}
+        </h2>
         <v-input
           :label="$t('email')"
           :form="form"
@@ -23,7 +25,7 @@
           name="password"
           type="password"
         >
-          <template v-slot:label>
+          <template #label>
             {{ $t('password') }}
             <span class="form-label-description">
               <router-link :to="{ name: 'password.request' }">
@@ -35,9 +37,9 @@
         <div class="mb-2">
           <label class="form-check">
             <input
+              v-model="remember"
               type="checkbox"
               class="form-check-input"
-              v-model="remember"
               name="remember"
             >
             <span class="form-check-label">{{ $t('remember_me') }}</span>
@@ -49,7 +51,11 @@
             type="submit"
             variant="primary"
           >
-            <span class="spinner-border spinner-border-sm mr-2" role="status" v-if="form.busy"></span>
+            <span
+              v-if="form.busy"
+              class="spinner-border spinner-border-sm mr-2"
+              role="status"
+            />
             {{ $t('login') }}
           </b-button>
         </div>
@@ -60,15 +66,10 @@
 
 <script>
 import Form from 'vform'
-import LoginWithGithub from '~/components/LoginWithGithub'
 
 export default {
-  middleware: 'guest',
   layout: 'basic',
-
-  components: {
-    LoginWithGithub
-  },
+  middleware: 'guest',
 
   metaInfo () {
     return { title: this.$t('login') }

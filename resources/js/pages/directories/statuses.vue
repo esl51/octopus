@@ -65,7 +65,7 @@
       :sort-direction="sortDirection"
       :filter="search"
     >
-      <template v-slot:cell(name)="data">
+      <template #cell(name)="data">
         <div class="d-flex align-items-center">
           <div
             v-if="data.item.variant"
@@ -76,7 +76,7 @@
         </div>
       </template>
 
-      <template v-slot:cell(is_published)="data">
+      <template #cell(is_published)="data">
         <fa
           v-if="data.item.is_published"
           fixed-width
@@ -86,7 +86,7 @@
         <span v-else />
       </template>
 
-      <template v-slot:cell(is_default)="data">
+      <template #cell(is_default)="data">
         <fa
           v-if="data.item.is_default"
           fixed-width
@@ -96,7 +96,7 @@
         <span v-else />
       </template>
 
-      <template v-slot:cell(actions)="data">
+      <template #cell(actions)="data">
         <!-- View -->
         <action-button
           :title="$t('view')"
@@ -218,8 +218,8 @@
 import { crud } from '~/mixins/crud'
 
 export default {
-  middleware: ['auth', 'acl'],
   mixins: [crud],
+  middleware: ['auth', 'acl'],
 
   metaInfo () {
     return { title: this.$t('statuses') }

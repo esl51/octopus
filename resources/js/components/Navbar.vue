@@ -127,6 +127,6 @@ export default {
 .profile-photo {
   width: 2rem;
   height: 2rem;
-  margin: -.375rem 0;
+  margin: -0.375rem 0;
 }
 </style>

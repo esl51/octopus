@@ -64,7 +64,7 @@ export const crud = {
       if (translatedAttributes === undefined) {
         translatedAttributes = this.translatedAttributes
       }
-      var prepared = attributes
+      const prepared = attributes
       if (Object.keys(translatedAttributes).length) {
         prepared.translations = {}
         Object.keys(config.locales).forEach((locale) => {

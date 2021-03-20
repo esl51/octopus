@@ -3,7 +3,7 @@
   pointer-events: none;
   color: transparent !important;
 
-  &:after {
+  &::after {
     animation: spinAround 500ms infinite linear;
     border: 2px solid #dbdbdb;
     border-radius: 50%;
@@ -24,6 +24,7 @@
   to { transform: rotate(359deg); }
 }
 
-.btn.disabled, .btn:disabled {
-  opacity: .5;
+.btn.disabled,
+.btn:disabled {
+  opacity: 0.5;
 }

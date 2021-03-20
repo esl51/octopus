@@ -14,3 +14,28 @@ $border-radius-sm: .15rem;
 
 // Nav Pills
 $nav-pills-border-radius: 0;
+
+// Colors
+$blue: #206bc4;
+$azure: #4299e1;
+$indigo: #4263eb;
+$purple: #ae3ec9;
+$pink: #d6336c;
+$red: #d63939;
+$orange: #f76707;
+$yellow: #f59f00;
+$lime: #74b816;
+$green: #2fb344;
+$teal: #0ca678;
+$cyan: #17a2b8;
+$black: #000;
+$white: #fff;
+
+$colors: (
+  "azure": $azure,
+  "lime": $lime
+);
+
+// Theme colors
+$dark: #202935;
+$muted: #5a626c;

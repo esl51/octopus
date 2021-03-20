@@ -11,10 +11,7 @@
         class="rounded-0"
         :items="breadcrumbs"
       />
-      <b-container
-        fluid
-        class="mt-4"
-      >
+      <b-container class="mt-4">
         <child />
       </b-container>
     </div>

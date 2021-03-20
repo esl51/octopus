@@ -38,7 +38,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 @import "https://use.fontawesome.com/releases/v5.12.0/css/all.css";
 
 .fm {
@@ -46,7 +46,7 @@ export default {
   padding: 0;
 }
 .fm .fm-body {
-  border-bottom-color: #dee2e6;
+  border-bottom-color: $gray-300;
   border-top: none;
 }
 .fm-info-block {
@@ -54,9 +54,12 @@ export default {
   padding-top: 0.5rem;
 }
 .fm-tree {
-  border-right-color: #dee2e6;
+  border-right-color: $gray-300;
 }
 .fm-modal {
   z-index: 1040;
+}
+.fm-breadcrumb .breadcrumb.active-manager {
+  background-color: $gray-200;
 }
 </style>

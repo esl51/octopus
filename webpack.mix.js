@@ -54,11 +54,11 @@ mix.webpackConfig({
 
 mix.then(() => {
   if (!mix.config.hmr) {
-    process.nextTick(() => publishAseets())
+    process.nextTick(() => publishAssets())
   }
 })
 
-function publishAseets () {
+function publishAssets () {
   const publicDir = path.resolve(__dirname, './public')
 
   fs.removeSync(path.join(publicDir, 'dist'))

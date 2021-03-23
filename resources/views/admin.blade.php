@@ -16,7 +16,7 @@ $config = [
 
   <title>{{ config('app.name') }}</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Nunito:400,400i,700,700i&display=swap&subset=cyrillic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,400i,700,700i&display=swap&subset=cyrillic" rel="stylesheet">
   <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}">
 </head>
 <body>

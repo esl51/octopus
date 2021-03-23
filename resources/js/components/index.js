@@ -14,6 +14,7 @@ import TranslatableInput from './TranslatableInput'
 import TranslatableTextarea from './TranslatableTextarea'
 import TranslatableEditor from './TranslatableEditor'
 import Tabs from './Tabs'
+import Icon from './Icon'
 import { HasError, AlertError, AlertSuccess } from 'vform'
 
 // Components that are registered globally.
@@ -33,6 +34,7 @@ import { HasError, AlertError, AlertSuccess } from 'vform'
   TranslatableTextarea,
   TranslatableEditor,
   Tabs,
+  Icon,
   HasError,
   AlertError,
   AlertSuccess

@@ -10,10 +10,7 @@
       @click="toggleSidebar()"
     >
       <!--<span class="navbar-toggler-icon"/>-->
-      <fa
-        icon="angle-double-left"
-        fixed-width
-      />
+      <v-icon type="chevrons-left" />
     </b-button>
     <b-navbar-toggle target="nav-collapse" />
     <b-collapse
@@ -41,10 +38,7 @@
             {{ user.name }}
           </template>
           <b-dropdown-item :to="{ name: 'settings.profile' }">
-            <fa
-              icon="cog"
-              fixed-width
-            />
+            <v-icon type="settings" />
             {{ $t('settings') }}
           </b-dropdown-item>
           <b-dropdown-divider />
@@ -52,10 +46,7 @@
             href="#"
             @click.prevent="logout"
           >
-            <fa
-              icon="sign-out-alt"
-              fixed-width
-            />
+            <v-icon type="logout" />
             {{ $t('logout') }}
           </b-dropdown-item>
         </b-nav-item-dropdown>

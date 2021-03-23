@@ -43,7 +43,7 @@ export default {
       }
       if (this.user.can['manage access']) {
         tabs.push({
-          icon: 'angle-double-up',
+          icon: 'chevrons-up',
           name: this.$t('roles'),
           route: { name: 'access.roles' },
           permission: 'manage access'

@@ -4,9 +4,9 @@
       :to="{ name: user ? 'dashboard' : 'welcome' }"
       class="sidebar-heading"
     >
-      <fa
-        icon="biohazard"
-        fixed-width
+      <v-icon
+        class="sidebar-icon"
+        type="biohazard"
       />
       <span class="sidebar-heading-title">{{ appName }}</span>
     </router-link>
@@ -26,9 +26,9 @@
           active-class="active"
           @click="expandItem(item)"
         >
-          <fa
-            :icon="item.icon ? item.icon : 'caret-right'"
-            fixed-width
+          <v-icon
+            class="sidebar-icon"
+            :type="item.icon ? item.icon : 'caret-right'"
           />
           <span class="sidebar-item-title">{{ item.title }}</span>
         </b-list-group-item>
@@ -49,9 +49,9 @@
             class="bg-dark"
             active-class="active"
           >
-            <fa
-              :icon="child.icon ? child.icon : 'caret-right'"
-              fixed-width
+            <v-icon
+              class="sidebar-icon"
+              :type="child.icon ? child.icon : 'caret-right'"
             />
             <span class="sidebar-item-title">{{ child.title }}</span>
           </b-list-group-item>
@@ -94,14 +94,14 @@ export default {
       this.items.push({
         title: this.$t('dashboard'),
         to: { name: 'dashboard' },
-        icon: 'tachometer-alt'
+        icon: 'dashboard'
       })
       // media
       if (this.user && (this.user.can['manage media'])) {
         this.items.push({
           title: this.$t('media_manager'),
           to: { name: 'media-manager' },
-          icon: 'photo-video'
+          icon: 'photo'
         })
       }
       // pages
@@ -109,7 +109,7 @@ export default {
         this.items.push({
           title: this.$t('pages'),
           to: { name: 'pages' },
-          icon: 'copy'
+          icon: 'files'
         })
       }
       // directories
@@ -127,7 +127,7 @@ export default {
           item.children.push({
             title: this.$t('statuses'),
             to: { name: 'directories.statuses' },
-            icon: 'lightbulb'
+            icon: 'bulb'
           })
         }
         this.items.push(item)
@@ -155,7 +155,7 @@ export default {
           item.children.push({
             title: this.$t('roles'),
             to: { name: 'access.roles' },
-            icon: 'angle-double-up'
+            icon: 'chevrons-up'
           })
           // permissions
           item.children.push({
@@ -181,3 +181,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.icon-wrap.sidebar-icon {
+  margin-top: 0;
+}
+</style>

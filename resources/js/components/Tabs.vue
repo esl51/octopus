@@ -7,10 +7,9 @@
       exact
       exact-active-class="active"
     >
-      <fa
+      <v-icon
         v-if="item.icon"
-        :icon="item.icon"
-        fixed-width
+        :type="item.icon"
       />
       {{ item.name }}
       <b-badge

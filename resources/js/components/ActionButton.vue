@@ -10,11 +10,7 @@
     size="sm"
     class="p-0"
   >
-    <fa
-      v-if="icon && icon.length"
-      :icon="icon"
-      fixed-width
-    />
+    <v-icon :type="icon" />
     <slot />
   </b-button>
 </template>

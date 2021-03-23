@@ -17,10 +17,7 @@
           variant="success"
           @click="addItem()"
         >
-          <fa
-            icon="plus"
-            fixed-width
-          />
+          <v-icon type="plus" />
           <span class="d-none d-md-inline">{{ $t('add') }}</span>
         </b-button>
       </b-input-group-prepend>
@@ -41,10 +38,7 @@
           :title="$t('refresh')"
           @click="refreshItems()"
         >
-          <fa
-            icon="sync"
-            fixed-width
-          />
+          <v-icon type="refresh" />
         </b-button>
       </b-input-group-append>
     </b-input-group>
@@ -77,21 +71,19 @@
       </template>
 
       <template #cell(is_published)="data">
-        <fa
+        <v-icon
           v-if="data.item.is_published"
-          fixed-width
           :title="$t('is_published')"
-          icon="check"
+          type="check"
         />
         <span v-else />
       </template>
 
       <template #cell(is_default)="data">
-        <fa
+        <v-icon
           v-if="data.item.is_default"
-          fixed-width
           :title="$t('is_default')"
-          icon="check"
+          type="check"
         />
         <span v-else />
       </template>
@@ -119,7 +111,7 @@
           :disabled="!data.item.is_deletable"
           :title="$t('delete')"
           class="text-danger"
-          icon="trash-alt"
+          icon="trash"
           @click.native="deleteItem(data.item)"
         />
       </template>

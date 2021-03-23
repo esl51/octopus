@@ -35,7 +35,7 @@ export default {
       const tabs = []
       if (this.user.can['manage statuses']) {
         tabs.push({
-          icon: 'lightbulb',
+          icon: 'bulb',
           name: this.$t('statuses'),
           route: { name: 'directories.statuses' },
           permission: 'manage statuses'

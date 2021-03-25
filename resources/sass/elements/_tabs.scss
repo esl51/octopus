@@ -19,9 +19,11 @@
 
   .nav-link {
     white-space: nowrap;
+    border-left: none;
+    border-right: none;
+    border-top: none;
     border-bottom-width: 2px;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0.75rem 0 0.625rem;
     color: $secondary;
 
     &.active {
@@ -48,5 +50,9 @@
     &:last-child {
       margin-right: 0;
     }
+  }
+
+  .modal &:first-child {
+    margin-top: -0.75rem;
   }
 }

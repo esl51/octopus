@@ -4,9 +4,9 @@
       @submit.prevent="login"
       @keydown="form.onKeydown($event)"
     >
-      <h1 class="mb-2">
+      <h2 class="mb-2">
         {{ appName }}
-      </h1>
+      </h2>
       <p class="text-muted mb-4">
         {{ $t('new_user') }}
         <router-link :to="{ name: 'register' }">
@@ -18,6 +18,7 @@
         :form="form"
         name="email"
         type="email"
+        size="lg"
         autofocus
       />
       <v-input
@@ -25,8 +26,9 @@
         :form="form"
         name="password"
         type="password"
+        size="lg"
       />
-      <p>
+      <p class="my-3">
         <router-link :to="{ name: 'password.request' }">
           {{ $t('forgot_password') }}
         </router-link>

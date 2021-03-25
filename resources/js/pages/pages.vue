@@ -1,7 +1,7 @@
 <template>
   <b-card :title="$t('pages')">
     <!-- Filters -->
-    <b-input-group class="mt-3 mb-4">
+    <b-input-group class="my-3">
       <b-input-group-prepend>
         <!-- Add -->
         <b-button
@@ -11,7 +11,7 @@
           @click="addItem()"
         >
           <v-icon type="plus" />
-          <span class="d-none d-md-inline">{{ $t('add') }}</span>
+          <span class="d-none d-md-inline-block ml-1-block ml-1">{{ $t('add') }}</span>
         </b-button>
       </b-input-group-prepend>
 
@@ -133,7 +133,7 @@
         @submit.prevent="submitItem()"
         @keydown="form.onKeydown($event)"
       >
-        <b-tabs content-class="pt-2">
+        <b-tabs content-class="pt-3">
           <b-tab
             active
             :title="$t('common_data')"

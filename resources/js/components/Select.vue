@@ -13,7 +13,7 @@
       :reduce="item => item[keyAttribute]"
       :options="options"
       :multiple="multiple"
-      :components="{ OpenIndicator }"
+      :components="{ OpenIndicator, Deselect }"
     />
   </b-form-group>
 </template>
@@ -42,6 +42,9 @@ export default {
   },
 
   data: () => ({
+    Deselect: {
+      render: createElement => createElement('span')
+    },
     OpenIndicator: {
       render: createElement => createElement('span')
     }

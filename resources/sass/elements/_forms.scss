@@ -46,8 +46,20 @@
 .vs__dropdown-toggle {
   @extend .form-control;
 
+  height: auto;
+  min-height: $input-height;
   background: $custom-select-background;
   display: flex;
+  align-items: center;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.vs__deselect {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="12" height="12" viewBox="0 0 24 24" stroke-width="1" stroke="%23262626" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>') no-repeat 50% 50%;
 }
 
 .vs__actions {
@@ -56,10 +68,9 @@
 
 .vs__clear {
   display: flex;
-
-  svg path {
-    fill: $gray-800;
-  }
+  width: 16px;
+  height: 16px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1" stroke="%23262626" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>') no-repeat 50% 50%;
 }
 
 .vs__selected-options {
@@ -67,19 +78,23 @@
   padding-right: 0;
   margin-left: -8px;
   align-items: center;
-  margin-top: -4px;
+  margin-top: 0;
 }
 
 .vs__selected {
   margin-top: 2px;
   margin-bottom: 2px;
+  margin-right: 2px;
   padding-right: 6px;
   padding-left: 6px;
+  color: $input-color;
 }
 
 .vs__search,
 .vs__search:focus {
-  margin-bottom: 4px;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 8px;
 }
 
 .vs--open .vs__dropdown-toggle {
@@ -104,6 +119,17 @@
   padding-bottom: 0;
 }
 
+.vs__dropdown-option,
+.vs__no-options {
+  padding: $input-btn-padding-y $input-btn-padding-x;
+  color: $input-color;
+}
+
+.vs__dropdown-option--highlight {
+  background-color: lighten($primary, 50%);
+  color: $input-color;
+}
+
 .password-field {
   input.form-control {
     padding-right: 44px;
@@ -117,5 +143,15 @@
     right: 0;
     height: 100%;
     width: 44px;
+  }
+}
+
+label {
+  font-size: 1rem;
+}
+
+.form-control {
+  &:hover {
+    border-color: lighten($primary, 15%);
   }
 }

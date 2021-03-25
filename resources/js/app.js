@@ -11,6 +11,12 @@ import '~/plugins'
 import '~/components'
 
 Vue.use(BootstrapVue, {
+  BCard: {
+    titleTag: 'h5'
+  },
+  BTable: {
+    outlined: true
+  },
   BToast: {
     noCloseButton: true,
     toaster: 'b-toaster-top-center'

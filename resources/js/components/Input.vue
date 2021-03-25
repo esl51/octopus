@@ -18,6 +18,7 @@
         :disabled="disabled"
         :autofocus="autofocus"
         :placeholder="placeholder"
+        :size="size"
         class="rounded"
       />
       <b-input-group-append>
@@ -41,6 +42,7 @@
       :disabled="disabled"
       :autofocus="autofocus"
       :placeholder="placeholder"
+      :size="size"
     />
   </b-form-group>
 </template>
@@ -53,7 +55,8 @@ export default {
   mixins: [control],
   props: {
     type: { type: String, default: 'text' },
-    placeholder: { type: String, default: null }
+    placeholder: { type: String, default: null },
+    size: { type: String, default: null }
   },
   data: () => ({
     passwordVisible: false

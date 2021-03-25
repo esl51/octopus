@@ -23,6 +23,7 @@
         :form="form"
         name="email"
         type="email"
+        size="lg"
         autofocus
       />
       <div class="form-footer">

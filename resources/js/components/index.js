@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Child from './Child'
+import PageHeader from './PageHeader'
 import Checkbox from './Checkbox'
 import Checkboxes from './Checkboxes'
 import Select from './Select'
@@ -20,6 +21,7 @@ import { HasError, AlertError, AlertSuccess } from 'vform'
 // Components that are registered globally.
 [
   Child,
+  PageHeader,
   Checkbox,
   Checkboxes,
   Select,

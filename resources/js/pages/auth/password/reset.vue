@@ -30,6 +30,7 @@
         :form="form"
         name="email"
         type="email"
+        size="lg"
         readonly
       />
       <v-input
@@ -37,6 +38,7 @@
         :form="form"
         name="password"
         type="password"
+        size="lg"
         autofocus
       />
       <v-input
@@ -44,6 +46,7 @@
         :form="form"
         name="password_confirmation"
         type="password"
+        size="lg"
       />
       <div class="form-footer">
         <v-submit :form="form">

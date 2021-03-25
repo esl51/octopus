@@ -1,6 +1,6 @@
 <template>
   <b-button
-    :type="formElement ? 'button' : type"
+    :type="type"
     :disabled="form.busy"
     :variant="variant"
   >

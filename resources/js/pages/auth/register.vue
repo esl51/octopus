@@ -32,6 +32,7 @@
         :placeholder="$t('name')"
         :form="form"
         name="name"
+        size="lg"
         autofocus
       />
       <v-input
@@ -39,18 +40,21 @@
         :form="form"
         name="email"
         type="email"
+        size="lg"
       />
       <v-input
         :placeholder="$t('password')"
         :form="form"
         name="password"
         type="password"
+        size="lg"
       />
       <v-input
         :placeholder="$t('confirm_password')"
         :form="form"
         name="password_confirmation"
         type="password"
+        size="lg"
       />
       <div class="form-footer">
         <v-submit :form="form">

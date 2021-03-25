@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Filters -->
-    <b-input-group class="my-4">
+    <b-input-group class="my-3">
       <b-input-group-prepend>
         <!-- Add -->
         <b-button
@@ -11,7 +11,7 @@
           @click="addItem()"
         >
           <v-icon type="plus" />
-          <span class="d-none d-md-inline">{{ $t('add') }}</span>
+          <span class="d-none d-md-inline-block ml-1">{{ $t('add') }}</span>
         </b-button>
       </b-input-group-prepend>
 
@@ -202,7 +202,6 @@ export default {
 
   data: () => ({
     apiUrl: '/api/access/users/',
-    perPage: 5,
     attributes: { name: '', email: '', password: '', password_confirmation: '', roles: [] }
   }),
 

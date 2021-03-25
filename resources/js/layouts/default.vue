@@ -10,9 +10,7 @@
         v-if="breadcrumbs && breadcrumbs.length"
         :items="breadcrumbs"
       />
-      <b-container
-        :class="breadcrumbs && breadcrumbs.length ? null : 'mt-3'"
-      >
+      <b-container :class="breadcrumbs && breadcrumbs.length ? null : 'mt-3'">
         <child />
       </b-container>
       <b-container class="my-3 text-muted">

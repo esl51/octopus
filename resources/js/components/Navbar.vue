@@ -5,7 +5,7 @@
     class="border-bottom bg-white"
   >
     <b-button
-      variant="light"
+      variant="link"
       class="mr-2 text-muted sidebar-toggle"
       @click="toggleSidebar()"
     >

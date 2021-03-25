@@ -1,6 +1,17 @@
 .table thead th {
   border-bottom-width: 1px;
-  background-color: $gray-100;
+  background-color: $table-head-bg;
+}
+
+.table thead th,
+.table thead td {
+  &:first-child {
+    border-top-left-radius: $border-radius;
+  }
+}
+
+.table.border {
+  border-color: $table-border-color !important;
 }
 
 .table-actions {

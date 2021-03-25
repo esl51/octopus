@@ -2,6 +2,8 @@
 
 namespace App\Notifications;
 
+use Illuminate\Support\Facades\Lang;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Auth\Notifications\ResetPassword as Notification;
 
@@ -16,8 +18,10 @@ class ResetPassword extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('You are receiving this email because we received a password reset request for your account.')
-            ->action('Reset Password', url(config('app.url').'/password/reset/'.$this->token).'?email='.urlencode($notifiable->email))
-            ->line('If you did not request a password reset, no further action is required.');
+            ->subject(Lang::get('Reset Password Notification'))
+            ->line(Lang::get('You are receiving this email because we received a password reset request for your account.'))
+            ->action(Lang::get('Reset Password'), url(config('app.url') . RouteServiceProvider::HOME . '/password/reset/'.$this->token) . '?email='.urlencode($notifiable->email))
+            ->line(Lang::get('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
+            ->line(Lang::get('If you did not request a password reset, no further action is required.'));
     }
 }

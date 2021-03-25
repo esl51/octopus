@@ -1,89 +1,68 @@
 <template>
-  <div class="row">
-    <div class="col-lg-8 m-auto">
-      <b-card :title="$t('reset_password')">
-        <form
-          @submit.prevent="reset"
-          @keydown="form.onKeydown($event)"
-        >
-          <alert-success
-            :form="form"
-            :message="status"
-          />
-
-          <!-- Email -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
-            <div class="col-md-7">
-              <input
-                v-model="form.email"
-                :class="{ 'is-invalid': form.errors.has('email') }"
-                class="form-control"
-                type="email"
-                name="email"
-                readonly
-              >
-              <has-error
-                :form="form"
-                field="email"
-              />
-            </div>
-          </div>
-
-          <!-- Password -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('password') }}</label>
-            <div class="col-md-7">
-              <input
-                v-model="form.password"
-                :class="{ 'is-invalid': form.errors.has('password') }"
-                class="form-control"
-                type="password"
-                name="password"
-              >
-              <has-error
-                :form="form"
-                field="password"
-              />
-            </div>
-          </div>
-
-          <!-- Password Confirmation -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('confirm_password') }}</label>
-            <div class="col-md-7">
-              <input
-                v-model="form.password_confirmation"
-                :class="{ 'is-invalid': form.errors.has('password_confirmation') }"
-                class="form-control"
-                type="password"
-                name="password_confirmation"
-              >
-              <has-error
-                :form="form"
-                field="password_confirmation"
-              />
-            </div>
-          </div>
-
-          <!-- Submit Button -->
-          <div class="form-group row">
-            <div class="col-md-9 ml-md-auto">
-              <v-button :loading="form.busy">
-                {{ $t('reset_password') }}
-              </v-button>
-            </div>
-          </div>
-        </form>
-      </b-card>
-    </div>
+  <form-result
+    v-if="status"
+    :title="$t('reset_password')"
+    :text="status"
+  >
+    <b-button
+      variant="primary"
+      :to="{ name: 'login' }"
+    >
+      {{ $t('login') }}
+    </b-button>
+  </form-result>
+  <div
+    v-else
+    class="sign-form"
+  >
+    <b-form
+      @submit.prevent="reset"
+      @keydown="form.onKeydown($event)"
+    >
+      <h1 class="mb-2">
+        {{ appName }}
+      </h1>
+      <p class="text-muted mb-4">
+        {{ $t('reset_password') }}
+      </p>
+      <v-input
+        :placeholder="$t('email')"
+        :form="form"
+        name="email"
+        type="email"
+        readonly
+      />
+      <v-input
+        :placeholder="$t('password')"
+        :form="form"
+        name="password"
+        type="password"
+        autofocus
+      />
+      <v-input
+        :placeholder="$t('confirm_password')"
+        :form="form"
+        name="password_confirmation"
+        type="password"
+      />
+      <div class="form-footer">
+        <v-submit :form="form">
+          {{ $t('reset_password') }}
+        </v-submit>
+      </div>
+    </b-form>
   </div>
 </template>
 
 <script>
 import Form from 'vform'
+import FormResult from '~/components/FormResult'
 
 export default {
+  components: {
+    FormResult
+  },
+
   layout: 'basic',
   middleware: 'guest',
 
@@ -92,6 +71,7 @@ export default {
   },
 
   data: () => ({
+    appName: window.config.appName,
     status: '',
     form: new Form({
       token: '',
@@ -109,9 +89,7 @@ export default {
   methods: {
     async reset () {
       const { data } = await this.form.post('/api/password/reset')
-
       this.status = data.status
-
       this.form.reset()
     }
   }

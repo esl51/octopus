@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import Button from './Button'
 import Child from './Child'
 import Checkbox from './Checkbox'
 import Checkboxes from './Checkboxes'
@@ -13,13 +12,13 @@ import TranslatableSwitch from './TranslatableSwitch'
 import TranslatableInput from './TranslatableInput'
 import TranslatableTextarea from './TranslatableTextarea'
 import TranslatableEditor from './TranslatableEditor'
+import Submit from './Submit'
 import Tabs from './Tabs'
 import Icon from './Icon'
 import { HasError, AlertError, AlertSuccess } from 'vform'
 
 // Components that are registered globally.
 [
-  Button,
   Child,
   Checkbox,
   Checkboxes,
@@ -33,6 +32,7 @@ import { HasError, AlertError, AlertSuccess } from 'vform'
   TranslatableInput,
   TranslatableTextarea,
   TranslatableEditor,
+  Submit,
   Tabs,
   Icon,
   HasError,

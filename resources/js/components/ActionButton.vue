@@ -8,7 +8,7 @@
     :target="target"
     variant="link"
     size="sm"
-    class="p-0"
+    class="p-0 text-success"
   >
     <v-icon :type="icon" />
     <slot />

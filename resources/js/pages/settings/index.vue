@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <h1 class="mb-4">
-      {{ $t('settings') }}
-    </h1>
+  <b-card :title="$t('settings')">
     <tabs :items="tabs" />
     <transition
       name="fade"
@@ -12,7 +9,7 @@
         <router-view />
       </div>
     </transition>
-  </div>
+  </b-card>
 </template>
 
 <script>

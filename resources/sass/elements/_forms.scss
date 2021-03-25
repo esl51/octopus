@@ -1,3 +1,48 @@
+.sign-form,
+.form-result {
+  width: 100%;
+  padding: 44px;
+  background: rgba(#fff, 0.85);
+  border-radius: 8px;
+}
+
+.sign-form {
+  max-width: 438px;
+}
+
+.form-result {
+  max-width: 700px;
+  text-align: center;
+}
+
+.form-result-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary;
+  color: #fff;
+  margin-bottom: $spacer;
+  padding-top: 0.25em;
+}
+
+.form-result-title {
+  font-weight: $headings-font-weight;
+}
+
+.form-result-text {
+  &:not(:last-child) {
+    margin-bottom: $spacer * 2;
+  }
+}
+
+.form-footer {
+  text-align: center;
+  margin-top: $spacer * 1.5;
+}
+
 .vs__dropdown-toggle {
   @extend .form-control;
 
@@ -13,7 +58,7 @@
   display: flex;
 
   svg path {
-    fill: #343a40;
+    fill: $gray-800;
   }
 }
 
@@ -57,4 +102,20 @@
 .vs__dropdown-menu {
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.password-field {
+  input.form-control {
+    padding-right: 44px;
+    background-image: none;
+  }
+
+  .input-group-append {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 44px;
+  }
 }

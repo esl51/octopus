@@ -165,6 +165,14 @@ export const crud = {
       this.initForm()
     },
 
+    async submitItem () {
+      if (this.item && this.item.id) {
+        await this.updateItem()
+      } else {
+        await this.createItem()
+      }
+    },
+
     async deleteItem (item) {
       const value = await this.$bvModal.msgBoxConfirm(this.$t('delete_confirm', { name: item.title || item.name }), {
         title: this.$t('confirm_title'),

@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <h1 class="mb-4">
-      {{ $t('dashboard') }}
-    </h1>
-    <p>{{ $t('you_are_logged_in') }}</p>
-  </div>
+  <b-card :title="$t('dashboard')">
+    {{ $t('you_are_logged_in') }}
+  </b-card>
 </template>
 
 <script>

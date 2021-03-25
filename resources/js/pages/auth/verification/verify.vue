@@ -1,58 +1,45 @@
 <template>
-  <div class="row">
-    <div class="col-lg-8 m-auto">
-      <b-card :title="$t('verify_email')">
-        <template v-if="success">
-          <div
-            class="alert alert-success"
-            role="alert"
-          >
-            {{ success }}
-          </div>
-
-          <router-link
-            :to="{ name: 'login' }"
-            class="btn btn-primary"
-          >
-            {{ $t('login') }}
-          </router-link>
-        </template>
-        <template v-else>
-          <div
-            class="alert alert-danger"
-            role="alert"
-          >
-            {{ error || $t('failed_to_verify_email') }}
-          </div>
-
-          <router-link
-            :to="{ name: 'verification.resend' }"
-            class="small float-right"
-          >
-            {{ $t('resend_verification_link') }}
-          </router-link>
-        </template>
-      </b-card>
-    </div>
-  </div>
+  <form-result
+    :icon="success ? 'check' : 'x'"
+    :title="$t('verify_email')"
+    :text="success ? success : error || $t('failed_to_verify_email')"
+  >
+    <b-button
+      v-if="success"
+      variant="primary"
+      :to="{ name: 'login' }"
+    >
+      {{ $t('login') }}
+    </b-button>
+    <b-button
+      v-else
+      variant="primary"
+      :to="{ name: 'verification.resend' }"
+    >
+      {{ $t('resend_verification_link') }}
+    </b-button>
+  </form-result>
 </template>
 
 <script>
+import FormResult from  '~/components/FormResult'
 import axios from 'axios'
-
 const qs = (params) => Object.keys(params).map(key => `${key}=${params[key]}`).join('&')
 
 export default {
+  components: {
+    FormResult
+  },
 
   async beforeRouteEnter (to, from, next) {
     try {
       const { data } = await axios.post(`/api/email/verify/${to.params.id}?${qs(to.query)}`)
-
       next(vm => { vm.success = data.status })
     } catch (e) {
       next(vm => { vm.error = e.response.data.status })
     }
   },
+
   layout: 'basic',
   middleware: 'guest',
 

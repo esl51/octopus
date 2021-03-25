@@ -1,14 +1,7 @@
 <template>
   <div>
-    <h2 class="my-3">
-      {{ $t('statuses') }}
-    </h2>
-
     <!-- Filters -->
-    <b-input-group
-      size="sm"
-      class="my-3"
-    >
+    <b-input-group class="my-4">
       <b-input-group-prepend>
         <!-- Add -->
         <b-button
@@ -46,7 +39,6 @@
     <!-- Items -->
     <b-table
       ref="items"
-      small
       stacked="sm"
       :api-url="apiUrl"
       :items="fetchItems"
@@ -141,7 +133,25 @@
         :items="[item]"
         :fields="fields.filter(field => field.key != 'actions')"
         class="table-view"
-      />
+      >
+        <template #cell(is_published)="data">
+          <v-icon
+            v-if="data.item.is_published"
+            :title="$t('is_published')"
+            type="check"
+          />
+          <span v-else />
+        </template>
+
+        <template #cell(is_default)="data">
+          <v-icon
+            v-if="data.item.is_default"
+            :title="$t('is_default')"
+            type="check"
+          />
+          <span v-else />
+        </template>
+      </b-table>
     </b-modal>
 
     <!-- Form -->
@@ -152,7 +162,7 @@
     >
       <b-form
         ref="itemForm"
-        @submit.prevent="item && item.id ? updateItem() : createItem()"
+        @submit.prevent="submitItem()"
         @keydown="form.onKeydown($event)"
       >
         <!-- Title -->
@@ -183,24 +193,16 @@
           :form="form"
           name="is_default"
         />
-
-        <b-button
-          v-show="false"
-          ref="itemSubmit"
-          type="submit"
-        />
       </b-form>
 
       <template slot="modal-footer">
         <!-- Submit -->
-        <b-button
-          :disabled="form.busy"
-          :variant="item && item.id ? 'primary' : 'success'"
-          :class="{ 'btn-loading': form.busy }"
-          @click="$refs.itemSubmit.click()"
+        <v-submit
+          :form="form"
+          @click.native="submitItem()"
         >
           {{ item && item.id ? $t('update') : $t('create') }}
-        </b-button>
+        </v-submit>
       </template>
     </b-modal>
   </div>

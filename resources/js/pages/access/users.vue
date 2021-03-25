@@ -1,14 +1,7 @@
 <template>
   <div>
-    <h2 class="my-3">
-      {{ $t('users') }}
-    </h2>
-
     <!-- Filters -->
-    <b-input-group
-      size="sm"
-      class="my-3"
-    >
+    <b-input-group class="my-4">
       <b-input-group-prepend>
         <!-- Add -->
         <b-button
@@ -46,7 +39,6 @@
     <!-- Items -->
     <b-table
       ref="items"
-      small
       stacked="sm"
       :api-url="apiUrl"
       :items="fetchItems"
@@ -138,7 +130,7 @@
     >
       <b-form
         ref="itemForm"
-        @submit.prevent="item && item.id ? updateItem() : createItem()"
+        @submit.prevent="submitItem()"
         @keydown="form.onKeydown($event)"
       >
         <!-- Name -->
@@ -181,24 +173,16 @@
           name="roles"
           label-attribute="name"
         />
-
-        <b-button
-          v-show="false"
-          ref="itemSubmit"
-          type="submit"
-        />
       </b-form>
 
       <template slot="modal-footer">
         <!-- Submit -->
-        <b-button
-          :disabled="form.busy"
-          :variant="item && item.id ? 'primary' : 'success'"
-          :class="{ 'btn-loading': form.busy }"
-          @click="$refs.itemSubmit.click()"
+        <v-submit
+          :form="form"
+          @click.native="submitItem()"
         >
           {{ item && item.id ? $t('update') : $t('create') }}
-        </b-button>
+        </v-submit>
       </template>
     </b-modal>
   </div>

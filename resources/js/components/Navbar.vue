@@ -2,7 +2,7 @@
   <b-navbar
     togglable="lg"
     type="light"
-    class="border-bottom bg-light"
+    class="border-bottom bg-white"
   >
     <b-button
       variant="light"
@@ -20,22 +20,21 @@
     >
       <b-navbar-nav>
         <locale-dropdown />
-        <!--<b-nav-item-dropdown :text="locales[locale]">
-          <b-dropdown-item v-for="(value, key) in locales" :key="key" :href="getLocalePath(key)">{{ value }}</b-dropdown-item>
-        </b-nav-item-dropdown>-->
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
         <!-- Authenticated -->
         <b-nav-item-dropdown
           v-if="user"
           right
+          no-caret
+          toggle-class="p-0"
         >
           <template slot="button-content">
-            <img
+            <b-avatar
               :src="user.photo_url"
-              class="rounded-circle profile-photo mr-1"
-            >
-            {{ user.name }}
+              :text="user.name"
+              size="40"
+            />
           </template>
           <b-dropdown-item :to="{ name: 'settings.profile' }">
             <v-icon type="settings" />
@@ -113,11 +112,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.profile-photo {
-  width: 2rem;
-  height: 2rem;
-  margin: -0.375rem 0;
-}
-</style>

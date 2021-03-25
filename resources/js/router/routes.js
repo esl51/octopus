@@ -3,7 +3,10 @@ function page (path) {
 }
 
 export default [
-  { path: '/', name: 'welcome', component: page('welcome.vue') },
+  { path: '/', name: 'home', redirect: '/admin' },
+  { path: '/admin', name: 'admin', redirect: '/admin/dashboard' },
+
+  { path: '/admin/dashboard', name: 'dashboard', component: page('dashboard.vue') },
 
   { path: '/admin/login', name: 'login', component: page('auth/login.vue') },
   { path: '/admin/register', name: 'register', component: page('auth/register.vue') },
@@ -11,8 +14,6 @@ export default [
   { path: '/admin/password/reset/:token', name: 'password.reset', component: page('auth/password/reset.vue') },
   { path: '/admin/email/verify/:id', name: 'verification.verify', component: page('auth/verification/verify.vue') },
   { path: '/admin/email/resend', name: 'verification.resend', component: page('auth/verification/resend.vue') },
-
-  { path: '/admin/dashboard', name: 'dashboard', component: page('dashboard.vue') },
 
   { path: '/admin/media-manager', name: 'media-manager', component: page('media-manager.vue'), meta: { permissions: ['manage media'] } },
 

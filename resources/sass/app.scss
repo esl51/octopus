@@ -1,17 +1,25 @@
 @import 'variables';
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-vue/src/index';
-//@import '~sweetalert2/src/sweetalert2';
-@import '~@sweetalert2/theme-bootstrap-4/bootstrap-4';
+
+// Base
+@import 'base';
+
+// Elements
 @import 'elements/card';
-@import 'elements/navbar';
+@import 'elements/editor';
+@import 'elements/forms';
+@import 'elements/icons';
 @import 'elements/sidebar';
-@import 'elements/buttons';
+@import 'elements/spinner';
 @import 'elements/tables';
 @import 'elements/tabs';
-@import 'elements/forms';
 @import 'elements/transitions';
 
-body {
-  font-family: 'Inter', sans-serif;
-}
+// Layouts
+@import 'layouts/default';
+@import 'layouts/basic';
+
+// Pages
+@import 'pages/media-manager';
+@import 'pages/pages';

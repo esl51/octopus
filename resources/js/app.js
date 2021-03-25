@@ -10,7 +10,12 @@ import FileManager from 'laravel-file-manager'
 import '~/plugins'
 import '~/components'
 
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue, {
+  BToast: {
+    noCloseButton: true,
+    toaster: 'b-toaster-top-center'
+  }
+})
 Vue.use(FileManager, { store })
 
 Vue.prototype.$axios = axios

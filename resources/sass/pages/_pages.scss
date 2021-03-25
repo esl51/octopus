@@ -1,0 +1,15 @@
+.refresh-slug {
+  transition: all 0.25s linear;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 24px;
+  width: auto;
+  padding: 0 0.25rem;
+  top: 0;
+  right: 0;
+}
+
+.refresh-slug.busy {
+  animation: spinAround 0.5s infinite linear;
+}

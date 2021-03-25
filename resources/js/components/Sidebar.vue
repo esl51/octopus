@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar-wrapper bg-dark border-right">
     <router-link
-      :to="{ name: user ? 'dashboard' : 'welcome' }"
+      :to="{ name: user ? 'dashboard' : 'login' }"
       class="sidebar-heading"
     >
       <v-icon
@@ -181,9 +181,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.icon-wrap.sidebar-icon {
-  margin-top: 0;
-}
-</style>

@@ -20,21 +20,6 @@ if (mix.inProduction()) {
 }
 
 mix.webpackConfig({
-  module: {
-    rules: [
-      {
-        test: /\.scss$/,
-        loader: 'sass-loader',
-        options: {
-          additionalData: `
-            @import "node_modules/bootstrap/scss/functions";
-            @import "node_modules/bootstrap/scss/variables";
-            @import "resources/sass/variables";
-          `
-        }
-      }
-    ]
-  },
   plugins: [
     // new BundleAnalyzerPlugin()
   ],
@@ -50,6 +35,10 @@ mix.webpackConfig({
       ? '/'
       : path.resolve(__dirname, mix.inProduction() ? './public/build' : './public')
   }
+})
+
+mix.options({
+  processCssUrls: false
 })
 
 mix.then(() => {

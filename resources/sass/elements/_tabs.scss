@@ -14,25 +14,39 @@
     bottom: 2px;
     width: 100%;
     height: 1px;
-    background-color: #dee2e6;
-  }
-
-  .nav-item {
-    margin-left: -1px;
-
-    &:first-child {
-      margin-left: 0;
-    }
+    background-color: $gray-300;
   }
 
   .nav-link {
     white-space: nowrap;
-    border-bottom-color: #dee2e6;
+    border-bottom-width: 2px;
+    padding-left: 0;
+    padding-right: 0;
+    color: $secondary;
 
     &.active {
       position: relative;
       z-index: 1;
-      border-bottom-color: #fff;
+      border-bottom-color: $primary;
+      color: $primary;
+      background-color: transparent;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .nav-item {
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
     }
   }
 }

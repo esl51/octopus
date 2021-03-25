@@ -1,5 +1,24 @@
+// Spacer
+$spacer: 1rem;
+
+// Colors
+$light: #f4f6fa;
+$dark: #232e3c;
+
 // Body
-$body-bg: #fff;
+$body-bg: $light;
+$body-color: $dark;
+
+// Font
+$font-size-base: 1rem;
+$font-size-sm: $font-size-base * 0.875;
+$h1-font-size: $font-size-base * 2;
+$h2-font-size: $font-size-base * 1.75;
+$h3-font-size: $font-size-base * 1.5;
+$h4-font-size: $font-size-base * 1.25;
+$h5-font-size: $font-size-base * 1.125;
+$h6-font-size: $font-size-base;
+$font-family-sans-serif: 'Inter', sans-serif;
 
 // Cards
 $card-spacer-x: 0.9375rem;
@@ -8,11 +27,14 @@ $card-cap-bg: #fbfbfb;
 $card-border-color: #e8eced;
 
 // Borders
-$border-radius: 0.125rem;
-$border-radius-lg: 0.2rem;
-$border-radius-sm: 0.15rem;
+$border-radius: 0.25rem;
+$border-radius-lg: 0.5rem;
+$border-radius-sm: 0.125rem;
 
-// Nav Pills
+// Nav
+$nav-tabs-border-color: transparent;
+$nav-tabs-link-hover-border-color: transparent;
+$nav-tabs-link-active-border-color: transparent;
 $nav-pills-border-radius: 0;
 
 // Colors
@@ -21,7 +43,7 @@ $azure: #4299e1;
 $indigo: #4263eb;
 $purple: #ae3ec9;
 $pink: #d6336c;
-$red: #d63939;
+$red: #b02a37;
 $orange: #f76707;
 $yellow: #f59f00;
 $lime: #74b816;
@@ -32,10 +54,47 @@ $black: #000;
 $white: #fff;
 
 $colors: (
-  "azure": $azure,
-  "lime": $lime
+  "azure": #4299e1,
+  "lime": #74b816
 );
 
 // Theme colors
-$dark: #202935;
-$muted: #5a626c;
+$text-muted: mix($body-color, #fff, 70%);
+$primary: $red;
+$secondary: $text-muted;
+$info: $azure;
+
+$theme-colors: (
+  "blue": $blue,
+  "azure": $azure,
+  "indigo": $indigo,
+  "purple": $purple,
+  "pink": $pink,
+  "red": $red,
+  "orange": $orange,
+  "yellow": $yellow,
+  "lime": $lime,
+  "green": $green,
+  "teal": $teal,
+  "cyan": $cyan,
+  "black": $black,
+  "white": $white
+);
+
+// Tables
+$b-table-sort-icon-bg-not-sorted: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="%23dee2e6" d="M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z"/><path fill="%23dee2e6" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"/></svg>');
+$b-table-sort-icon-bg-ascending: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="%23212529" d="M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z"/><path fill="%23dee2e6" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"/></svg>');
+$b-table-sort-icon-bg-descending: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="%23dee2e6" d="M279 224H41c-21.4 0-32.1-25.9-17-41L143 64c9.4-9.4 24.6-9.4 33.9 0l119 119c15.2 15.1 4.5 41-16.9 41z"/><path fill="%23212529" d="M41 288h238c21.4 0 32.1 25.9 17 41L177 448c-9.4 9.4-24.6 9.4-33.9 0L24 329c-15.1-15.1-4.4-41 17-41z"/></svg>');
+
+// Spinner
+$spinner-border-width: 2px;
+$spinner-border-width-sm: 1px;
+
+// Breadcrumb
+$breadcrumb-bg: transparent;
+$breadcrumb-border-radius: 0;
+$breadcrumb-margin-bottom: 0;
+$breadcrumb-font-size: $font-size-sm;
+
+// Headings
+$headings-margin-bottom: $spacer * 1.5;

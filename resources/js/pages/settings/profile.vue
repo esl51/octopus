@@ -1,65 +1,30 @@
 <template>
   <div>
-    <h2 class="my-3">
-      {{ $t('profile') }}
-    </h2>
-    <form
+    <b-form
       @submit.prevent="update"
       @keydown="form.onKeydown($event)"
     >
-      <alert-success
+      <!-- Name -->
+      <v-input
+        :label="$t('name')"
         :form="form"
-        :message="$t('info_updated')"
+        name="name"
+        autofocus
       />
 
-      <!-- Name -->
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label text-md-right">{{ $t('name') }}</label>
-        <div class="col-md-6">
-          <input
-            v-model="form.name"
-            :class="{ 'is-invalid': form.errors.has('name') }"
-            class="form-control"
-            type="text"
-            name="name"
-          >
-          <has-error
-            :form="form"
-            field="name"
-          />
-        </div>
-      </div>
-
       <!-- Email -->
-      <div class="form-group row">
-        <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
-        <div class="col-md-6">
-          <input
-            v-model="form.email"
-            :class="{ 'is-invalid': form.errors.has('email') }"
-            class="form-control"
-            type="email"
-            name="email"
-          >
-          <has-error
-            :form="form"
-            field="email"
-          />
-        </div>
-      </div>
+      <v-input
+        :label="$t('email')"
+        :form="form"
+        name="email"
+        type="email"
+      />
 
-      <!-- Submit Button -->
-      <div class="form-group row">
-        <div class="col-md-9 ml-md-auto">
-          <v-button
-            :loading="form.busy"
-            type="success"
-          >
-            {{ $t('update') }}
-          </v-button>
-        </div>
-      </div>
-    </form>
+      <!-- Submit -->
+      <v-submit :form="form">
+        {{ $t('update') }}
+      </v-submit>
+    </b-form>
   </div>
 </template>
 
@@ -97,6 +62,9 @@ export default {
       const { data } = await this.form.patch('/api/settings/profile')
 
       this.$store.dispatch('auth/updateUser', { user: data })
+      this.$bvToast.toast(this.$t('info_updated'), {
+        variant: 'success'
+      })
     }
   }
 }

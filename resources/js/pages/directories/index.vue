@@ -1,9 +1,5 @@
 <template>
-  <div>
-    <h1 class="mb-4">
-      {{ $t('directories') }}
-    </h1>
-
+  <b-card :title="$t('directories')">
     <tabs :items="tabs" />
 
     <transition
@@ -14,7 +10,7 @@
         <router-view />
       </div>
     </transition>
-  </div>
+  </b-card>
 </template>
 
 <script>

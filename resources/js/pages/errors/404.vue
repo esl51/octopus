@@ -1,18 +1,27 @@
 <template>
-  <b-card
+  <form-result
+    icon="file-alert"
     :title="$t('page_not_found')"
-    class="text-center"
   >
-    <b-card-text>
-      <router-link :to="{ name: 'welcome' }">
-        {{ $t('go_home') }}
-      </router-link>
-    </b-card-text>
-  </b-card>
+    <b-button
+      variant="primary"
+      :to="{ name: 'dashboard' }"
+    >
+      {{ $t('go_home') }}
+    </b-button>
+  </form-result>
 </template>
 
 <script>
+import FormResult from '~/components/FormResult'
+
 export default {
-  name: 'NotFound'
+  name: 'NotFound',
+
+  components: {
+    FormResult
+  },
+
+  layout: 'basic'
 }
 </script>

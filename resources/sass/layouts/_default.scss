@@ -1,0 +1,23 @@
+.wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+}
+
+.content {
+  overflow-y: auto;
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  .content {
+    width: 100vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    flex: 1 1 auto;
+    overflow-y: auto;
+  }
+}

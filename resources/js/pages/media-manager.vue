@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <h1 class="mb-4">
-      {{ $t('media_manager') }}
-    </h1>
-    <file-manager :settings="settings" />
-  </div>
+  <b-card :title="$t('media_manager')">
+    <file-manager
+      :settings="settings"
+      class="mt-3"
+    />
+  </b-card>
 </template>
 
 <script>
@@ -40,31 +40,4 @@ export default {
 
 <style lang="scss">
 @import "https://use.fontawesome.com/releases/v5.12.0/css/all.css";
-
-.fm {
-  height: 800px;
-  padding: 0;
-}
-
-.fm .fm-body {
-  border-bottom-color: $gray-300;
-  border-top: none;
-}
-
-.fm-info-block {
-  border-bottom: none;
-  padding-top: 0.5rem;
-}
-
-.fm-tree {
-  border-right-color: $gray-300;
-}
-
-.fm-modal {
-  z-index: 1040;
-}
-
-.fm-breadcrumb .breadcrumb.active-manager {
-  background-color: $gray-200;
-}
 </style>

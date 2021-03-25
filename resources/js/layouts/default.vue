@@ -1,18 +1,22 @@
 <template>
   <div
-    class="wrapper"
+    class="default-layout wrapper"
     :class="{ 'toggled': !sidebarActive }"
   >
     <sidebar />
-    <div class="page-content-wrapper">
+    <div class="content">
       <navbar />
       <b-breadcrumb
         v-if="breadcrumbs && breadcrumbs.length"
-        class="rounded-0"
         :items="breadcrumbs"
       />
-      <b-container class="mt-4">
+      <b-container
+        :class="breadcrumbs && breadcrumbs.length ? null : 'mt-3'"
+      >
         <child />
+      </b-container>
+      <b-container class="my-3 text-muted">
+        <small>{{ (new Date).getFullYear() }} &copy; {{ appName }}</small>
       </b-container>
     </div>
   </div>
@@ -30,6 +34,10 @@ export default {
     Sidebar,
     Navbar
   },
+
+  data: () => ({
+    appName: window.config.appName
+  }),
 
   computed: mapGetters({
     breadcrumbs: 'common/breadcrumbs',

@@ -9,6 +9,7 @@
     >
       <v-icon
         v-if="item.icon"
+        class="mr-1"
         :type="item.icon"
       />
       {{ item.name }}

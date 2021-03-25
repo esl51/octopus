@@ -1,14 +1,7 @@
 <template>
-  <div>
-    <h1 class="mb-4">
-      {{ $t('pages') }}
-    </h1>
-
+  <b-card :title="$t('pages')">
     <!-- Filters -->
-    <b-input-group
-      size="sm"
-      class="my-3"
-    >
+    <b-input-group class="mt-3 mb-4">
       <b-input-group-prepend>
         <!-- Add -->
         <b-button
@@ -46,7 +39,6 @@
     <!-- Items -->
     <b-table
       ref="items"
-      small
       stacked="sm"
       :api-url="apiUrl"
       :items="fetchItems"
@@ -138,7 +130,7 @@
     >
       <b-form
         ref="itemForm"
-        @submit.prevent="item && item.id ? updateItem() : createItem()"
+        @submit.prevent="submitItem()"
         @keydown="form.onKeydown($event)"
       >
         <b-tabs content-class="pt-2">
@@ -239,27 +231,19 @@
             />
           </b-tab>
         </b-tabs>
-
-        <b-button
-          v-show="false"
-          ref="itemSubmit"
-          type="submit"
-        />
       </b-form>
 
       <template slot="modal-footer">
         <!-- Submit -->
-        <b-button
-          :disabled="form.busy"
-          :variant="item && item.id ? 'primary' : 'success'"
-          :class="{ 'btn-loading': form.busy }"
-          @click="$refs.itemSubmit.click()"
+        <v-submit
+          :form="form"
+          @click.native="submitItem()"
         >
           {{ item && item.id ? $t('update') : $t('create') }}
-        </b-button>
+        </v-submit>
       </template>
     </b-modal>
-  </div>
+  </b-card>
 </template>
 
 <script>
@@ -360,22 +344,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.refresh-slug {
-  transition: all 0.25s linear;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  height: 24px;
-  width: auto;
-  padding: 0 0.25rem;
-  top: 0;
-  right: 0;
-}
-
-.refresh-slug.busy {
-  animation: spinAround 0.5s infinite linear;
-}
-
-</style>

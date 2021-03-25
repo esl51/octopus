@@ -16,7 +16,10 @@ export default {
   },
   computed: {
     iconSize () {
-      let iconSize = Number.isInteger(this.size) ? this.size : '20'
+      if (parseInt(this.size)) {
+        return this.size
+      }
+      let iconSize = '20'
       switch (this.size) {
         case 'xs':
           iconSize = '14'
@@ -39,16 +42,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.icon-wrap {
-  display: inline-block;
-  vertical-align: middle;
-  margin-top: -0.25em;
-  line-height: 1;
-
-  svg {
-    stroke-width: 1.25;
-  }
-}
-</style>

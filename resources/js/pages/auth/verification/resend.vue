@@ -1,52 +1,48 @@
 <template>
-  <div class="row">
-    <div class="col-lg-8 m-auto">
-      <b-card :title="$t('verify_email')">
-        <form
-          @submit.prevent="send"
-          @keydown="form.onKeydown($event)"
-        >
-          <alert-success
-            :form="form"
-            :message="status"
-          />
-
-          <!-- Email -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
-            <div class="col-md-7">
-              <input
-                v-model="form.email"
-                :class="{ 'is-invalid': form.errors.has('email') }"
-                class="form-control"
-                type="email"
-                name="email"
-              >
-              <has-error
-                :form="form"
-                field="email"
-              />
-            </div>
-          </div>
-
-          <!-- Submit Button -->
-          <div class="form-group row">
-            <div class="col-md-9 ml-md-auto">
-              <v-button :loading="form.busy">
-                {{ $t('send_verification_link') }}
-              </v-button>
-            </div>
-          </div>
-        </form>
-      </b-card>
-    </div>
+  <form-result
+    v-if="status"
+    :title="$t('verify_email')"
+    :text="status"
+  />
+  <div
+    v-else
+    class="sign-form"
+  >
+    <b-form
+      @submit.prevent="send"
+      @keydown="form.onKeydown($event)"
+    >
+      <h1 class="mb-2">
+        {{ appName }}
+      </h1>
+      <p class="text-muted mb-4">
+        {{ $t('verify_email') }}
+      </p>
+      <v-input
+        :placeholder="$t('email')"
+        :form="form"
+        name="email"
+        type="email"
+        autofocus
+      />
+      <div class="form-footer">
+        <v-submit :form="form">
+          {{ $t('send_verification_link') }}
+        </v-submit>
+      </div>
+    </b-form>
   </div>
 </template>
 
 <script>
 import Form from 'vform'
+import FormResult from '~/components/FormResult'
 
 export default {
+  components: {
+    FormResult
+  },
+
   layout: 'basic',
   middleware: 'guest',
 
@@ -55,6 +51,7 @@ export default {
   },
 
   data: () => ({
+    appName: window.config.appName,
     status: '',
     form: new Form({
       email: ''
@@ -70,9 +67,7 @@ export default {
   methods: {
     async send () {
       const { data } = await this.form.post('/api/email/resend')
-
       this.status = data.status
-
       this.form.reset()
     }
   }

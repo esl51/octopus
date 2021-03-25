@@ -1,30 +1,38 @@
 <template>
-  <div>
-    <b-form
-      @submit.prevent="update"
-      @keydown="form.onKeydown($event)"
-    >
-      <!-- Name -->
-      <v-input
-        :label="$t('name')"
-        :form="form"
-        name="name"
-        autofocus
-      />
+  <div class="pt-3">
+    <b-row>
+      <b-col md="7">
+        <b-form
+          @submit.prevent="update"
+          @keydown="form.onKeydown($event)"
+        >
+          <!-- Name -->
+          <v-input
+            :label="$t('name')"
+            :form="form"
+            name="name"
+            label-cols-md="4"
+            autofocus
+          />
 
-      <!-- Email -->
-      <v-input
-        :label="$t('email')"
-        :form="form"
-        name="email"
-        type="email"
-      />
+          <!-- Email -->
+          <v-input
+            :label="$t('email')"
+            :form="form"
+            name="email"
+            type="email"
+            label-cols-md="4"
+          />
 
-      <!-- Submit -->
-      <v-submit :form="form">
-        {{ $t('update') }}
-      </v-submit>
-    </b-form>
+          <div class="form-footer">
+            <!-- Submit -->
+            <v-submit :form="form">
+              {{ $t('update') }}
+            </v-submit>
+          </div>
+        </b-form>
+      </b-col>
+    </b-row>
   </div>
 </template>
 

@@ -1,30 +1,39 @@
 <template>
-  <div>
-    <b-form
-      @submit.prevent="update"
-      @keydown="form.onKeydown($event)"
-    >
-      <!-- Password -->
-      <v-input
-        :label="$t('password')"
-        :form="form"
-        name="password"
-        type="password"
-      />
+  <div class="pt-3">
+    <b-row>
+      <b-col md="7">
+        <b-form
+          @submit.prevent="update"
+          @keydown="form.onKeydown($event)"
+        >
+          <!-- Password -->
+          <v-input
+            :label="$t('password')"
+            :form="form"
+            name="password"
+            type="password"
+            label-cols-md="4"
+            autofocus
+          />
 
-      <!-- Password Confirmation -->
-      <v-input
-        :label="$t('confirm_password')"
-        :form="form"
-        name="password_confirmation"
-        type="password"
-      />
+          <!-- Password Confirmation -->
+          <v-input
+            :label="$t('confirm_password')"
+            :form="form"
+            name="password_confirmation"
+            type="password"
+            label-cols-md="4"
+          />
 
-      <!-- Submit -->
-      <v-submit :form="form">
-        {{ $t('update') }}
-      </v-submit>
-    </b-form>
+          <div class="form-footer">
+            <!-- Submit -->
+            <v-submit :form="form">
+              {{ $t('update') }}
+            </v-submit>
+          </div>
+        </b-form>
+      </b-col>
+    </b-row>
   </div>
 </template>
 

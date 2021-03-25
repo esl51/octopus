@@ -5,6 +5,10 @@
     :state="form.errors && form.errors.has(name) ? false : null"
     :invalid-feedback="form.errors && form.errors.get(name)"
     :description="hint"
+    :label-cols="labelCols"
+    :label-cols-sm="labelColsSm"
+    :label-cols-md="labelColsMd"
+    :label-cols-lg="labelColsLg"
   >
     <vue-select
       :id="id || 'item-' + name"

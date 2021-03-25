@@ -4,6 +4,10 @@
     :label-for="id || 'item-' + name"
     :invalid-feedback="form.errors && form.errors.get(name)"
     :description="hint"
+    :label-cols="labelCols"
+    :label-cols-sm="labelColsSm"
+    :label-cols-md="labelColsMd"
+    :label-cols-lg="labelColsLg"
   >
     <jodit-editor
       :id="id || name"

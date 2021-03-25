@@ -1,5 +1,8 @@
 <template>
-  <b-nav-item-dropdown :text="locales[locale]">
+  <b-nav-item-dropdown
+    right
+    :text="locales[locale]"
+  >
     <b-dropdown-item
       v-for="(value, key) in locales"
       :key="key"

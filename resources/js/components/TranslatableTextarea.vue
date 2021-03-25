@@ -2,6 +2,10 @@
   <b-form-group
     :description="hint"
     :state="hasErrors() ? false : null"
+    :label-cols="labelCols"
+    :label-cols-sm="labelColsSm"
+    :label-cols-md="labelColsMd"
+    :label-cols-lg="labelColsLg"
   >
     <div class="d-flex align-items-baseline mb-2">
       <label class="mb-0">{{ label }}</label>

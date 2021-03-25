@@ -51,6 +51,10 @@
       :sort-direction="sortDirection"
       :filter="search"
     >
+      <template #cell(title)="data">
+        {{ data.item.title }}
+        <small class="d-block text-muted">{{ data.item.url }}</small>
+      </template>
       <template #cell(status)="data">
         <div class="d-flex align-items-center">
           <div

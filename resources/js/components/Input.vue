@@ -7,6 +7,10 @@
     :description="hint"
     :class="type === 'password' ? 'password-field' : null"
     label-class="form-label"
+    :label-cols="labelCols"
+    :label-cols-sm="labelColsSm"
+    :label-cols-md="labelColsMd"
+    :label-cols-lg="labelColsLg"
   >
     <b-input-group v-if="type === 'password'">
       <b-form-input

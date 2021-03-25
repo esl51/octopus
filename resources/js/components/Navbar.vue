@@ -18,10 +18,10 @@
       class="ml-2"
       is-nav
     >
-      <b-navbar-nav>
+      <b-navbar-nav class="ml-auto mr-2">
         <locale-dropdown />
       </b-navbar-nav>
-      <b-navbar-nav class="ml-auto">
+      <b-navbar-nav>
         <!-- Authenticated -->
         <b-nav-item-dropdown
           v-if="user"

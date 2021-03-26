@@ -195,6 +195,6 @@ $toast-header-border-color: transparent;
 $b-toaster-offset-top: 1rem;
 
 // Custom select
-$custom-select-indicator-color: $gray-500;
+$custom-select-indicator-color: $gray-700;
 $custom-select-indicator: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-selector" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="#{$custom-select-indicator-color}" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><polyline points="8 9 12 5 16 9"></polyline><polyline points="16 15 12 19 8 15"></polyline></svg>');
 $custom-select-bg-size: 16px 16px;

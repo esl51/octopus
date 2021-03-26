@@ -18,7 +18,6 @@ Vue.use(BootstrapVue, {
     outlined: true
   },
   BToast: {
-    noCloseButton: true,
     toaster: 'b-toaster-top-center'
   }
 })

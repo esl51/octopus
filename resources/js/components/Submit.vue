@@ -3,6 +3,7 @@
     :type="type"
     :disabled="form.busy"
     :variant="variant"
+    class="submit-button"
   >
     <b-spinner
       v-if="form.busy"

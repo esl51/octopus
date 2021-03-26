@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { control } from '~/mixins/control'
 import VueSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css'
 
@@ -33,12 +34,9 @@ export default {
     VueSelect
   },
 
+  mixins: [control],
+
   props: {
-    label: { type: String, default: null },
-    hint: { type: String, default: null },
-    form: { type: Object, default: null },
-    id: { type: String, default: null },
-    name: { type: String, default: null },
     keyAttribute: { type: String, default: 'id' },
     labelAttribute: { type: String, default: 'name' },
     options: { type: Array, default: null },

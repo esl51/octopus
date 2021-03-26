@@ -1,7 +1,7 @@
 <template>
   <form-result
-    icon="file-alert"
-    :title="$t('page_not_found')"
+    title="404"
+    :text="$t('page_not_found')"
   >
     <b-button
       variant="primary"

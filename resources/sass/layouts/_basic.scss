@@ -5,8 +5,32 @@
   height: 100vh;
   overflow-y: auto;
   position: relative;
+  background: url('/img/bg.jpg') no-repeat 50% 50%;
+  background-size: cover;
 }
 
 .basic-inner {
   margin: auto;
+}
+
+.basic-drawer {
+  width: 45%;
+
+  .b-sidebar-body {
+    display: flex;
+  }
+}
+
+@media (max-width: 991px) {
+  .basic-drawer {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .basic-drawer {
+    .basic-inner {
+      margin-left: 64px;
+    }
+  }
 }

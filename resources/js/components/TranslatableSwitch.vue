@@ -2,6 +2,7 @@
   <b-nav
     pills
     small
+    class="translatable-switch"
   >
     <b-nav-item
       v-for="locale in Object.keys(locales)"

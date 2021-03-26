@@ -12,9 +12,9 @@
       @submit.prevent="send"
       @keydown="form.onKeydown($event)"
     >
-      <h1 class="mb-2">
+      <h2 class="mb-2">
         {{ appName }}
-      </h1>
+      </h2>
       <p class="text-muted mb-4">
         {{ $t('verify_email') }}
       </p>

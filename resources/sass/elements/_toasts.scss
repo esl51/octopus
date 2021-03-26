@@ -1,0 +1,22 @@
+@each $color, $value in $theme-colors {
+  .b-toast-#{$color} {
+    .toast {
+      .toast-header,
+      .toast-body {
+        border-left: 10px solid theme-color($color);
+        color: $body-color;
+        background-color: $white;
+      }
+    }
+  }
+}
+
+.b-toast {
+  .toast-header {
+    padding-bottom: 0;
+  }
+
+  .toast-body {
+    padding-top: 0;
+  }
+}

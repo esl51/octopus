@@ -2,7 +2,7 @@
   <b-navbar
     togglable="lg"
     type="light"
-    class="border-bottom bg-white"
+    class="bg-white"
   >
     <b-button
       variant="link"
@@ -36,17 +36,27 @@
               size="40"
             />
           </template>
-          <b-dropdown-item :to="{ name: 'settings.profile' }">
-            <v-icon type="settings" />
+          <b-dropdown-item
+            :to="{ name: 'settings.profile' }"
+            link-class="d-flex align-items-center"
+          >
             {{ $t('settings') }}
+            <v-icon
+              type="settings"
+              class="ml-auto"
+            />
           </b-dropdown-item>
           <b-dropdown-divider />
           <b-dropdown-item
             href="#"
+            link-class="d-flex align-items-center"
             @click.prevent="logout"
           >
-            <v-icon type="logout" />
             {{ $t('logout') }}
+            <v-icon
+              type="logout"
+              class="ml-auto"
+            />
           </b-dropdown-item>
         </b-nav-item-dropdown>
         <!-- Guest -->

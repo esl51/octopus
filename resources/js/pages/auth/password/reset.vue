@@ -19,11 +19,14 @@
       @submit.prevent="reset"
       @keydown="form.onKeydown($event)"
     >
-      <h1 class="mb-2">
+      <h2 class="mb-2">
         {{ appName }}
-      </h1>
+      </h2>
       <p class="text-muted mb-4">
-        {{ $t('reset_password') }}
+        {{ $t('reset_password') }}.
+        <router-link :to="{ name: 'login' }">
+          {{ $t('login') }}
+        </router-link>
       </p>
       <v-input
         :placeholder="$t('email')"

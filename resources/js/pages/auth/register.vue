@@ -19,9 +19,9 @@
       @submit.prevent="register"
       @keydown="form.onKeydown($event)"
     >
-      <h1 class="mb-2">
+      <h2 class="mb-2">
         {{ appName }}
-      </h1>
+      </h2>
       <p class="text-muted mb-4">
         {{ $t('already_registered') }}
         <router-link :to="{ name: 'login' }">

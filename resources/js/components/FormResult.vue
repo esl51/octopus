@@ -9,12 +9,12 @@
         size="32"
       />
     </div>
-    <p
+    <h2
       v-if="title"
       class="form-result-title"
     >
       {{ title }}
-    </p>
+    </h2>
     <div
       v-if="text"
       class="form-result-text"
@@ -28,7 +28,7 @@
 export default {
   name: 'FormResult',
   props: {
-    icon: { type: String, default: 'check' },
+    icon: { type: String, default: null },
     title: { type: String, default: null },
     text: { type: String, default: null }
   }

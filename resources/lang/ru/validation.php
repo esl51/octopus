@@ -151,5 +151,6 @@ return [
         'translations.*.title' => 'Заголовок',
         'translations.*.name' => 'Имя',
         'translations.*.slug' => 'Идентификатор URL',
+        'status_id' => 'Статус',
     ],
 ];

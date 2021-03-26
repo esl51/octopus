@@ -29,7 +29,7 @@ class PageController extends ItemController
     {
         return [
             'author_id' => 'nullable|exists:users,id',
-            'status_id' => 'nullable|exists:statuses,id',
+            'status_id' => 'required|exists:statuses,id',
             'translations' => 'nullable|array',
             'translations.*' => 'nullable|array',
             'translations.*.slug' => ['required', 'max:255', new Slug],

@@ -152,6 +152,7 @@ return [
         'translations.*.title' => 'Title',
         'translations.*.name' => 'Name',
         'translations.*.slug' => 'Slug',
+        'status_id' => 'Status',
     ],
 
 ];

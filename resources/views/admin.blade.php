@@ -17,6 +17,7 @@ $config = [
   <title>{{ config('app.name') }}</title>
 
   <!--<link href="https://fonts.googleapis.com/css?family=Inter:400,600&display=swap&subset=cyrillic" rel="stylesheet">-->
+  <link rel="stylesheet" href="{{ mix('dist/css/bootstrap.css') }}">
   <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}">
 </head>
 <body>

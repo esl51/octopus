@@ -1,6 +1,7 @@
 @import 'variables';
-@import '~bootstrap/scss/bootstrap';
-@import '~bootstrap-vue/src/index';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
 
 // Base
 @import 'base';

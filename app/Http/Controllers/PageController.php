@@ -46,11 +46,29 @@ class PageController extends ItemController
     /**
      * @inheritdoc
      */
+    public function sortByTranslations()
+    {
+        return [
+            'title' => 'page_translations.title',
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function sortByReplacements()
+    {
+        return [
+            'status' => 'status_id',
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function newItemsQuery(Request $request)
     {
         $items = parent::newItemsQuery($request);
-
-        $items->join('page_translations', 'page_translations.page_id', '=', 'pages.id');
 
         $search = filter_var($request->search, FILTER_SANITIZE_STRING);
         if ($search) {

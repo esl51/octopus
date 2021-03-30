@@ -36,11 +36,19 @@ class StatusController extends ItemController
     /**
      * @inheritdoc
      */
+    protected function sortByTranslations()
+    {
+        return [
+            'name' => 'status_translations.name'
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function newItemsQuery(Request $request)
     {
         $items = parent::newItemsQuery($request);
-
-        $items->join('status_translations', 'status_translations.status_id', '=', 'statuses.id');
 
         $search = filter_var($request->search, FILTER_SANITIZE_STRING);
         if ($search) {

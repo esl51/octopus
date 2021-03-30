@@ -80,6 +80,26 @@ abstract class ItemController extends Controller
     }
 
     /**
+     * "sort_by" replacements
+     *
+     * @return array
+     */
+    protected function sortByReplacements()
+    {
+        return [];
+    }
+
+    /**
+     * "sort_by" translations
+     *
+     * @return array
+     */
+    protected function sortByTranslations()
+    {
+        return [];
+    }
+
+    /**
      * Get items query.
      *
      * @param  \Illuminate\Http\Request $request
@@ -119,7 +139,16 @@ abstract class ItemController extends Controller
         $sortBy = filter_var($request->sort_by, FILTER_SANITIZE_STRING);
         $sortDesc = (bool) $request->sort_desc;
         if ($sortBy) {
-            $items->orderBy($sortBy, $sortDesc ? 'desc' : 'asc');
+            $replacements = $this->sortByReplacements();
+            $translations = $this->sortByTranslations();
+            if (!empty($replacements[$sortBy])) {
+                $items->orderBy($replacements[$sortBy], $sortDesc ? 'desc' : 'asc');
+            } elseif (!empty($translations[$sortBy])) {
+                $items->orderByTranslation($sortBy, $sortDesc ? 'desc' : 'asc');
+                $items->groupBy($translations[$sortBy]);
+            } else {
+                $items->orderBy($sortBy, $sortDesc ? 'desc' : 'asc');
+            }
         }
 
         return $items;

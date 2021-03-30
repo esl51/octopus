@@ -1,25 +1,25 @@
-.jodit_toolbar_btn-h1 {
+.jodit-toolbar-button_h1 {
   display: none !important;
 }
 
-.jodit_wysiwyg img[style*="float: left"] {
+.jodit-wysiwyg img[style*="float: left"] {
   margin-right: 15px;
   margin-bottom: 15px;
 }
 
-.jodit_wysiwyg img[style*="float: right"] {
+.jodit-wysiwyg img[style*="float: right"] {
   margin-left: 15px;
   margin-bottom: 15px;
 }
 
-.jodit_wysiwyg [data-jodit_iframe_wrapper] {
+.jodit-wysiwyg [data-jodit_iframe_wrapper] {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   width: auto !important;
   height: 0 !important;
 }
 
-.jodit_wysiwyg [data-jodit_iframe_wrapper] iframe {
+.jodit-wysiwyg [data-jodit_iframe_wrapper] iframe {
   position: absolute;
   top: 0;
   left: 0;

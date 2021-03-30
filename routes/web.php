@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,30 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+$routes = function () {
 
-// Route::get('/welcome', function () {
-//     return view('welcome');
-// });
+    // Admin routes
+    Route::get('admin/{path?}', function () {
+        return view('admin');
+    })->where([
+        'path' => '(.*?)',
+    ]);
+
+    //
+
+    // Other routes
+    Route::get('{slug?}', [PageController::class, 'render']);
+
+};
+
+Route::group([
+    'prefix' => '{locale?}',
+    'middleware' => 'localization',
+    'where' => [
+        'locale' => '(' . implode('|', array_keys(config('app.locales'))) . ')',
+    ],
+], $routes);
+
+Route::group([
+    'middleware' => 'localization',
+], $routes);

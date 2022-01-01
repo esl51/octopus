@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import FormResult from  '~/components/FormResult'
+import FormResult from '~/components/FormResult'
 import axios from 'axios'
 const qs = (params) => Object.keys(params).map(key => `${key}=${params[key]}`).join('&')
 

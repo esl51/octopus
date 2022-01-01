@@ -43,8 +43,12 @@ export default {
 
   metaInfo () {
     const { appName } = window.config
+    const lang = this.$store.getters['lang/locale']
 
     return {
+      htmlAttrs: {
+        lang
+      },
       title: appName,
       titleTemplate: `%s · ${appName}`
     }

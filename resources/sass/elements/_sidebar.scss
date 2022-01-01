@@ -4,10 +4,6 @@
 
   .icon-wrap {
     transition: all 0.25s ease-out;
-
-    .wrapper.toggled & {
-      transform: rotate(180deg);
-    }
   }
 
   &:hover,
@@ -39,6 +35,10 @@
       margin-top: 0.1em;
     }
   }
+}
+
+.wrapper.toggled .sidebar-toggle .icon-wrap {
+  transform: rotate(180deg);
 }
 
 .sidebar-heading {

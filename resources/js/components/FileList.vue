@@ -1,10 +1,10 @@
 <template>
   <div
-    v-if="files && files.length > 0"
+    v-if="fileList && fileList.length > 0"
     class="file-list"
   >
     <div
-      v-for="file in files"
+      v-for="file in fileList"
       :key="file.id"
       class="file-list-item"
     >
@@ -48,6 +48,14 @@ export default {
     download: { type: Boolean, default: false }
   },
 
+  data: () => ({
+    fileList: []
+  }),
+
+  mounted () {
+    this.fileList = this.files
+  },
+
   methods: {
     async downloadFile (file) {
       const { data } = await this.$axios({ url: file.url, method: 'get', responseType: 'blob' })
@@ -62,9 +70,9 @@ export default {
       }, 100)
     },
     async deleteFile (file) {
-      const i = this.files.map(c => c.id).indexOf(file.id)
+      const i = this.fileList.map(c => c.id).indexOf(file.id)
       await this.$axios.delete(file.url)
-      this.files.splice(i, 1)
+      this.fileList.splice(i, 1)
       this.$noty.success(this.$t('deleted'))
     }
   }

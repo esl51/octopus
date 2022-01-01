@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .sign-form,
 .form-result {
   width: 100%;
@@ -180,7 +182,7 @@ label,
 
 .form-control {
   &:hover {
-    border-color: lighten($primary, 15%);
+    border-color: color.adjust($primary, $lightness: 15%);
   }
 }
 
@@ -189,10 +191,10 @@ label,
     @include button-variant(
       $value,
       $value,
-      $hover-background: lighten($value, 3%),
-      $hover-border: lighten($value, 5%),
-      $active-background: darken($value, 10%),
-      $active-border: darken($value, 12.5%)
+      $hover-background: color.adjust($value, $lightness: 3%),
+      $hover-border: color.adjust($value, $lightness: 5%),
+      $active-background: color.adjust($value, $lightness: -10%),
+      $active-border: color.adjust($value, $lightness: -12.5%)
     );
   }
 }
@@ -278,7 +280,7 @@ label,
 
   .btn.active {
     border: 1px solid $primary !important;
-    background: lighten($primary, 70%) !important;
+    background: color.adjust($primary, $lightness: 70%) !important;
   }
 
   .col-accent {

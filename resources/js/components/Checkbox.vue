@@ -4,23 +4,21 @@
     v-model="form[name]"
     :value="1"
     :unchecked-value="0"
-    :state="form.errors && form.errors.has(name) ? false : null"
-    :invalid-feedback="form.errors && form.errors.get(name)"
+    :state="state"
+    :invalid-feedback="errors"
     :description="hint"
+    :size="size"
   >
     {{ label }}
   </b-form-checkbox>
 </template>
 
 <script>
+import { control } from '~/mixins/control'
+
 export default {
   name: 'VCheckbox',
-  props: {
-    label: { type: String, default: null },
-    hint: { type: String, default: null },
-    form: { type: Object, default: null },
-    id: { type: String, default: null },
-    name: { type: String, default: null }
-  }
+
+  mixins: [control]
 }
 </script>

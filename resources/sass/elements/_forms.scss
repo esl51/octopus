@@ -47,96 +47,117 @@
   margin-top: $spacer * 1.5;
 }
 
-.vs__dropdown-toggle {
-  @extend .form-control;
+.form-select {
+  .vs__dropdown-toggle {
+    @extend .form-control;
 
-  height: auto;
-  min-height: $input-height;
-  background: $custom-select-background;
-  display: flex;
-  align-items: center;
-  padding-top: 0.125rem;
-  padding-bottom: 0.125rem;
-}
-
-.vs__deselect {
-  display: block;
-  width: 12px;
-  height: 12px;
-  background: escape-svg(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="12" height="12" viewBox="0 0 24 24" stroke-width="1" stroke="#{$custom-select-indicator-color}" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>')) no-repeat 50% 50%;
-}
-
-.vs__actions {
-  padding-top: 0;
-}
-
-.vs__clear {
-  display: flex;
-  width: 16px;
-  height: 16px;
-  background: escape-svg(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1" stroke="#{$custom-select-indicator-color}" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>')) no-repeat 50% 50%;
-}
-
-.vs__selected-options {
-  padding-left: 0;
-  padding-right: 0;
-  margin-left: -8px;
-  align-items: center;
-  margin-top: 0;
-}
-
-.vs__selected {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  margin-right: 2px;
-  padding-right: 6px;
-  padding-left: 6px;
-  color: $input-color;
-  font-size: $font-size-base;
-  line-height: $line-height-base;
-}
-
-.vs__search,
-.vs__search:focus {
-  margin-bottom: 0;
-  margin-top: 0;
-  padding-left: 8px;
-}
-
-.vs--open .vs__dropdown-toggle {
-  color: $input-focus-color;
-  background-color: $input-focus-bg;
-  border-color: $input-focus-border-color;
-  border-bottom-left-radius: $input-border-radius;
-  border-bottom-right-radius: $input-border-radius;
-  outline: 0;
-  // Avoid using mixin so we can pass custom focus shadow properly
-  @if $enable-shadows {
-    box-shadow: $input-box-shadow, $input-focus-box-shadow;
+    height: auto;
+    font-size: $font-size-base;
+    min-height: $input-height;
+    background: $input-bg $custom-select-background;
+    display: flex;
+    align-items: center;
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+    border-color: $input-border-color;
+    border-radius: $input-border-radius;
   }
 
-  @else {
-    box-shadow: $input-focus-box-shadow;
+  .vs__deselect {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: escape-svg(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="12" height="12" viewBox="0 0 24 24" stroke-width="1" stroke="#{$custom-select-indicator-color}" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>')) no-repeat 50% 50%;
+  }
+
+  .vs__actions {
+    padding-top: 0;
+    padding-right: 1.25rem;
+  }
+
+  .vs__clear {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    background: escape-svg(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="16" height="16" viewBox="0 0 24 24" stroke-width="1" stroke="#{$custom-select-indicator-color}" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>')) no-repeat 50% 50%;
+  }
+
+  .vs__selected-options {
+    padding-left: 0;
+    padding-right: 0;
+    // margin-left: -8px;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  .vs__selected {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-right: 2px;
+    padding-right: 6px;
+    padding-left: 6px;
+    color: $input-color;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+  }
+
+  .vs__search,
+  .vs__search:focus {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 8px;
+    color: $input-color;
+    background-color: $input-bg;
+    position: relative;
+  }
+
+  .vs__search::placeholder {
+    color: $text-muted;
+  }
+
+  &.vs--open .vs__dropdown-toggle {
+    color: $input-focus-color;
+    background-color: $input-focus-bg;
+    border-color: $input-focus-border-color;
+    border-bottom-left-radius: $input-border-radius;
+    border-bottom-right-radius: $input-border-radius;
+    outline: 0;
+    // Avoid using mixin so we can pass custom focus shadow properly
+    @if $enable-shadows {
+      box-shadow: $input-box-shadow, $input-focus-box-shadow;
+    }
+
+    @else {
+      box-shadow: $input-focus-box-shadow;
+    }
+  }
+
+  .vs__dropdown-menu {
+    border-radius: $input-border-radius;
+    padding-top: $dropdown-padding-y;
+    padding-bottom: $dropdown-padding-y;
+    border: none;
+    box-shadow: $box-shadow;
+    margin-top: $dropdown-spacer;
+  }
+
+  .vs__dropdown-option,
+  .vs__no-options {
+    padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+    color: $input-color;
+  }
+
+  .vs__dropdown-option--highlight {
+    background-color: $gray-200;
+    color: $input-color;
   }
 }
 
-.vs__dropdown-menu {
-  padding-top: $dropdown-padding-y;
-  padding-bottom: $dropdown-padding-y;
-  border: none;
-  box-shadow: $box-shadow;
-  margin-top: 0.25rem;
-}
-
-.vs__dropdown-option,
-.vs__no-options {
-  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
-  color: $input-color;
-}
-
-.vs__dropdown-option--highlight {
-  background-color: $gray-200;
-  color: $input-color;
+.form-select-lg {
+  .vs__dropdown-toggle {
+    font-size: $font-size-lg;
+    min-height: $input-height-lg;
+  }
 }
 
 .password-field {
@@ -185,5 +206,149 @@ label,
 }
 
 .translatable-switch {
-  margin-bottom: -1px;
+  margin-bottom: 2px;
+}
+
+.custom-file-label::after {
+  content: " ";
+  padding: $input-btn-padding-y $input-btn-padding-x;
+  min-width: calc(#{$input-btn-padding-x} * 2 + 20px);
+  background: escape-svg(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="#{$body-color}" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2"></path><polyline points="7 9 12 4 17 9"></polyline><line x1="12" y1="4" x2="12" y2="16"></line></svg>')) no-repeat 50% 50%;
+}
+
+.custom-control {
+  z-index: 0;
+}
+
+.b-form-datepicker {
+  & > .btn {
+    width: 0;
+    padding: 0;
+    opacity: 0;
+  }
+
+  & > label.form-control {
+    flex: 1 0 auto;
+    padding-left: $input-btn-padding-x-lg !important;
+    background: escape-svg(url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="#{$custom-select-indicator-color}" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><rect x="4" y="5" width="16" height="16" rx="2"></rect><line x1="16" y1="3" x2="16" y2="7"></line><line x1="8" y1="3" x2="8" y2="7"></line><line x1="4" y1="11" x2="20" y2="11"></line><line x1="11" y1="15" x2="12" y2="15"></line><line x1="12" y1="15" x2="12" y2="18"></line></svg>')) no-repeat right 0.75rem center/20px 20px !important;
+  }
+
+  &.show,
+  &:hover {
+    border-color: $input-focus-border-color;
+    position: relative;
+  }
+
+  &.show {
+    box-shadow: $input-focus-box-shadow;
+    z-index: 2;
+  }
+
+  .dropdown-menu {
+    z-index: 3;
+  }
+}
+
+.b-calendar-header {
+  display: none;
+}
+
+.b-calendar-grid {
+  border: none;
+  box-shadow: none !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.b-calendar-grid-caption {
+  margin-bottom: 0.5rem;
+}
+
+.b-calendar-grid-weekdays {
+  border-bottom: none !important;
+  margin-bottom: 0.5rem;
+
+  small {
+    font-size: $font-size-base !important;
+  }
+}
+
+.b-calendar-grid-body {
+  .btn {
+    font-weight: $font-weight-normal !important;
+    border-radius: $border-radius !important;
+    box-shadow: none !important;
+  }
+
+  .btn.active {
+    border: 1px solid $primary !important;
+    background: lighten($primary, 70%) !important;
+  }
+
+  .col-accent {
+    .btn {
+      color: $warning !important;
+    }
+  }
+}
+
+.b-calendar-grid-help {
+  display: none;
+}
+
+form.b-dropdown-form:focus {
+  outline: none !important;
+}
+
+.number-input {
+  .btn-outline-light {
+    flex: 0 0 30px;
+    width: 30px !important;
+    color: $input-color;
+    border-color: $input-border-color;
+
+    &:hover,
+    &:focus {
+      background-color: $input-focus-bg;
+      border-color: $input-focus-border-color;
+      color: $input-focus-border-color;
+    }
+
+    &:active {
+      border-color: $input-focus-border-color !important;
+      box-shadow: none !important;
+    }
+  }
+
+  .input-group-prepend .btn-outline-light {
+    margin-right: 0.5rem;
+    border-radius: $input-border-radius;
+  }
+
+  .input-group-append .btn-outline-light {
+    margin-left: 0.5rem;
+    border-radius: $input-border-radius;
+  }
+
+  input.form-control {
+    flex: 0 0 30px;
+    width: 30px !important;
+    text-align: center !important;
+    -moz-appearance: textfield;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    border-radius: $input-border-radius;
+  }
+
+  input.form-control::-webkit-outer-spin-button,
+  input.form-control::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .filter-input {
+    flex: 1 1 100%;
+  }
 }

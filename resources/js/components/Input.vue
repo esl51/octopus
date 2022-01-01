@@ -2,21 +2,20 @@
   <b-form-group
     :label="label"
     :label-for="id || 'item-' + name"
-    :state="form.errors && form.errors.has(name) ? false : null"
-    :invalid-feedback="form.errors && form.errors.get(name)"
+    :state="state"
     :description="hint"
     :class="type === 'password' ? 'password-field' : null"
-    label-class="form-label"
     :label-cols="labelCols"
     :label-cols-sm="labelColsSm"
     :label-cols-md="labelColsMd"
     :label-cols-lg="labelColsLg"
+    :label-size="size"
   >
     <b-input-group v-if="type === 'password'">
       <b-form-input
         :id="id || 'item-' + name"
         v-model="form[name]"
-        :state="form.errors && form.errors.has(name) ? false : null"
+        :state="state"
         :type="passwordInputType"
         :readonly="readonly"
         :disabled="disabled"
@@ -40,13 +39,17 @@
       v-else
       :id="id || 'item-' + name"
       v-model="form[name]"
-      :state="form.errors && form.errors.has(name) ? false : null"
+      :state="state"
       :type="type"
       :readonly="readonly"
       :disabled="disabled"
       :autofocus="autofocus"
       :placeholder="placeholder"
       :size="size"
+    />
+    <b-form-invalid-feedback
+      :state="state"
+      v-html="errors"
     />
   </b-form-group>
 </template>
@@ -59,8 +62,7 @@ export default {
   mixins: [control],
   props: {
     type: { type: String, default: 'text' },
-    placeholder: { type: String, default: null },
-    size: { type: String, default: null }
+    placeholder: { type: String, default: null }
   },
   data: () => ({
     passwordVisible: false

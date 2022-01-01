@@ -1,12 +1,13 @@
 <template>
   <b-button
     :type="type"
-    :disabled="form.busy"
+    :disabled="(form && form.busy) || disabled"
     :variant="variant"
+    size="md"
     class="submit-button"
   >
     <b-spinner
-      v-if="form.busy"
+      v-if="form && form.busy"
       class="mr-1"
       small
     />
@@ -18,8 +19,9 @@
 export default {
   name: 'VSubmit',
   props: {
+    disabled: { type: Boolean, default: false },
     type: { type: String, default: 'submit' },
-    form: { type: Object, required: true },
+    form: { type: Object, default: null },
     variant: { type: String, default: 'primary' }
   }
 }

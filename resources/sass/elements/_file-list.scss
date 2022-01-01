@@ -1,0 +1,21 @@
+.file-list-item {
+  padding: 0.25rem 1rem;
+  margin-bottom: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $light;
+}
+
+.file-list-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.file-list-delete {
+  color: $danger;
+  margin-left: 1rem;
+}

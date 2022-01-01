@@ -6,8 +6,9 @@
     :label-cols-sm="labelColsSm"
     :label-cols-md="labelColsMd"
     :label-cols-lg="labelColsLg"
+    :label-size="size"
   >
-    <div class="d-flex align-items-baseline mb-2">
+    <div :class="'d-flex align-items-baseline mb-2 col-form-label-' + size">
       <label class="mb-0">{{ label }}</label>
 
       <v-translatable-switch

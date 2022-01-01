@@ -2,18 +2,23 @@
   <b-form-group
     :label="label"
     :label-for="id || 'item-' + name"
-    :invalid-feedback="form.errors && form.errors.get(name)"
+    :state="state"
     :description="hint"
     :label-cols="labelCols"
     :label-cols-sm="labelColsSm"
     :label-cols-md="labelColsMd"
     :label-cols-lg="labelColsLg"
+    :label-size="size"
   >
     <jodit-editor
       :id="id || name"
-      v-model="form.translations[locale][name]"
+      v-model="form[name]"
       :config="editorConfig"
       :buttons="editorButtons"
+    />
+    <b-form-invalid-feedback
+      :state="state"
+      v-html="errors"
     />
   </b-form-group>
 </template>

@@ -6,8 +6,9 @@
     :label-cols-sm="labelColsSm"
     :label-cols-md="labelColsMd"
     :label-cols-lg="labelColsLg"
+    :label-size="size"
   >
-    <div class="d-flex align-items-baseline mb-2">
+    <div :class="'d-flex align-items-baseline mb-2 col-form-label-' + size">
       <label class="mb-0">{{ label }}</label>
 
       <v-translatable-switch
@@ -31,6 +32,8 @@
       :readonly="readonly"
       :disabled="disabled"
       :autofocus="autofocus && currentLocale == locale"
+      :size="size"
+      :placeholder="placeholder"
     />
 
     <div
@@ -53,7 +56,8 @@ export default {
 
   props: {
     rows: { type: Number, default: 3 },
-    maxRows: { type: Number, default: 10 }
+    maxRows: { type: Number, default: 10 },
+    placeholder: { type: String, default: null }
   }
 }
 </script>

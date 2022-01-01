@@ -6,7 +6,12 @@ import Checkboxes from './Checkboxes'
 import Select from './Select'
 import VariantSelect from './VariantSelect'
 import ActionButton from './ActionButton'
+import Autocomplete from './Autocomplete'
+import Datepicker from './Datepicker'
 import Input from './Input'
+import NumberInput from './NumberInput'
+import FileInput from './FileInput'
+import FileList from './FileList'
 import Textarea from './Textarea'
 import Editor from './Editor'
 import TranslatableSwitch from './TranslatableSwitch'
@@ -26,7 +31,12 @@ import Icon from './Icon'
   Select,
   VariantSelect,
   ActionButton,
+  Autocomplete,
+  Datepicker,
   Input,
+  NumberInput,
+  FileInput,
+  FileList,
   Textarea,
   Editor,
   TranslatableSwitch,

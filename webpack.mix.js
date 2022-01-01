@@ -1,11 +1,18 @@
-const path = require('path')
-const fs = require('fs-extra')
+const { join, resolve } = require('path')
+const { copySync, removeSync } = require('fs-extra')
 const mix = require('laravel-mix')
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 mix
-  .js('resources/js/app.js', 'public/dist/js')
-  .sass('resources/sass/bootstrap.scss', 'public/dist/css')
+  .js('resources/js/app.js', 'public/dist/js').vue({
+    extractStyles: true
+  })
+  .sass('resources/sass/bootstrap.scss', 'public/dist/css'
+  /*, {
+    sassOptions: {
+      quietDeps: true // todo: remove after upgrade to bootstrap 5
+    }
+  }
+  */)
   .sass('resources/sass/app.scss', 'public/dist/css')
 
   .disableNotifications()
@@ -21,37 +28,28 @@ if (mix.inProduction()) {
 }
 
 mix.webpackConfig({
-  plugins: [
-    // new BundleAnalyzerPlugin()
-  ],
   resolve: {
     extensions: ['.js', '.json', '.vue'],
     alias: {
-      '~': path.join(__dirname, './resources/js')
+      '~': join(__dirname, './resources/js')
     }
   },
   output: {
     chunkFilename: 'dist/js/[chunkhash].js',
-    path: mix.config.hmr
-      ? '/'
-      : path.resolve(__dirname, mix.inProduction() ? './public/build' : './public')
+    path: resolve(__dirname, mix.inProduction() ? './public/build' : './public')
   }
-})
-
-mix.options({
-  processCssUrls: false
 })
 
 mix.then(() => {
-  if (!mix.config.hmr) {
-    process.nextTick(() => publishAssets())
+  if (mix.inProduction()) {
+    process.nextTick(() => publishAseets())
   }
 })
 
-function publishAssets () {
-  const publicDir = path.resolve(__dirname, './public')
+function publishAseets () {
+  const publicDir = resolve(__dirname, './public')
 
-  fs.removeSync(path.join(publicDir, 'dist'))
-  fs.copySync(path.join(publicDir, 'build', 'dist'), path.join(publicDir, 'dist'))
-  fs.removeSync(path.join(publicDir, 'build'))
+  removeSync(join(publicDir, 'dist'))
+  copySync(join(publicDir, 'build', 'dist'), join(publicDir, 'dist'))
+  removeSync(join(publicDir, 'build'))
 }

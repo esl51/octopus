@@ -17,7 +17,7 @@
     "laravel/tinker": "^2.5",
     "laravel/ui": "^3.0",
     "roquie/laravel-perpage-resolver": "dev-master",
-    "spatie/laravel-permission": "^4.0",
+    "spatie/laravel-permission": "^5.4.1",
     "tymon/jwt-auth": "^1.0.1"
   },
   "require-dev": {

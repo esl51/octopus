@@ -16,7 +16,6 @@ import TranslatableEditor from './TranslatableEditor'
 import Submit from './Submit'
 import Tabs from './Tabs'
 import Icon from './Icon'
-import { HasError, AlertError, AlertSuccess } from 'vform'
 
 // Components that are registered globally.
 [
@@ -36,10 +35,7 @@ import { HasError, AlertError, AlertSuccess } from 'vform'
   TranslatableEditor,
   Submit,
   Tabs,
-  Icon,
-  HasError,
-  AlertError,
-  AlertSuccess
+  Icon
 ].forEach(Component => {
   Vue.component(Component.name, Component)
 })

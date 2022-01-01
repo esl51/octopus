@@ -1,31 +1,31 @@
-@import 'variables';
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins';
+@import "variables";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
 
 // Base
-@import 'base';
+@import "base";
 
 // Elements
-@import 'elements/card';
-@import 'elements/editor';
-@import 'elements/forms';
-@import 'elements/file-list';
-@import 'elements/icons';
-@import 'elements/modals';
-@import 'elements/page-header';
-@import 'elements/sidebar';
-@import 'elements/spinner';
-@import 'elements/tables';
-@import 'elements/tabs';
-@import 'elements/text';
-@import 'elements/toasts';
-@import 'elements/transitions';
+@import "elements/card";
+@import "elements/editor";
+@import "elements/forms";
+@import "elements/file-list";
+@import "elements/icons";
+@import "elements/modals";
+@import "elements/page-header";
+@import "elements/sidebar";
+@import "elements/spinner";
+@import "elements/tables";
+@import "elements/tabs";
+@import "elements/text";
+@import "elements/toasts";
+@import "elements/transitions";
 
 // Layouts
-@import 'layouts/default';
-@import 'layouts/basic';
+@import "layouts/default";
+@import "layouts/basic";
 
 // Pages
-@import 'pages/media-manager';
-@import 'pages/pages';
+@import "pages/media-manager";
+@import "pages/pages";

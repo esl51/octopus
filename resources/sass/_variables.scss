@@ -13,13 +13,10 @@ $gray-600: #8c8c8c;
 $gray-700: #595959;
 $gray-800: #262626;
 $gray-900: #141414;
-
 $light: $gray-100;
 $dark: $gray-800;
-
 $body-bg: $light;
 $body-color: $dark;
-
 $blue: #1890ff;
 $indigo: #2f54eb;
 $purple: #722ed1;
@@ -38,7 +35,6 @@ $text-muted: mix($body-color, #fff, 70%);
 $primary: $blue;
 $secondary: $gray-700;
 $info: $blue;
-
 $theme-colors: (
   "blue": $blue,
   "indigo": $indigo,
@@ -181,17 +177,17 @@ $close-font-size: 0;
 $toast-padding-x: 0.75rem;
 $toast-padding-y: 0.75rem;
 $toast-font-size: 0.875rem;
+
 //$toast-color: null;
 $toast-background-color: $white;
 $toast-border-width: 0;
+
 // $toast-border-color: rgba($black, 0.1);
 $toast-border-radius: $border-radius;
 $toast-box-shadow: $box-shadow;
-
 $toast-header-color: $body-color;
 $toast-header-background-color: rgba($white, 0.85);
 $toast-header-border-color: transparent;
-
 $b-toaster-offset-top: 1rem;
 
 // Custom select

@@ -63,6 +63,11 @@
     border-radius: $input-border-radius;
   }
 
+  &.form-select-lg .vs__dropdown-toggle {
+    font-size: $font-size-lg;
+    min-height: $input-height-lg;
+  }
+
   .vs__deselect {
     display: block;
     width: 12px;
@@ -85,7 +90,6 @@
   .vs__selected-options {
     padding-left: 0;
     padding-right: 0;
-    // margin-left: -8px;
     align-items: center;
     margin-top: 0;
   }
@@ -122,12 +126,11 @@
     border-bottom-left-radius: $input-border-radius;
     border-bottom-right-radius: $input-border-radius;
     outline: 0;
+
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
       box-shadow: $input-box-shadow, $input-focus-box-shadow;
-    }
-
-    @else {
+    } @else {
       box-shadow: $input-focus-box-shadow;
     }
   }
@@ -150,13 +153,6 @@
   .vs__dropdown-option--highlight {
     background-color: $gray-200;
     color: $input-color;
-  }
-}
-
-.form-select-lg {
-  .vs__dropdown-toggle {
-    font-size: $font-size-lg;
-    min-height: $input-height-lg;
   }
 }
 
@@ -334,7 +330,7 @@ form.b-dropdown-form:focus {
     flex: 0 0 30px;
     width: 30px !important;
     text-align: center !important;
-    -moz-appearance: textfield;
+    appearance: textfield;
     padding-left: 0.25rem;
     padding-right: 0.25rem;
     border-radius: $input-border-radius;
@@ -342,7 +338,7 @@ form.b-dropdown-form:focus {
 
   input.form-control::-webkit-outer-spin-button,
   input.form-control::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+    appearance: none;
     margin: 0;
   }
 }

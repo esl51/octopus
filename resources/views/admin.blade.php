@@ -29,6 +29,8 @@ $config = [
   </script>
 
   {{-- Load the application scripts --}}
-  <script src="{{ mix('dist/js/app.js') }}"></script>
+  <script src="{{ mix('dist/js/manifest.js') }}" defer></script>
+  <script src="{{ mix('dist/js/vendor.js') }}" defer></script>
+  <script src="{{ mix('dist/js/app.js') }}" defer></script>
 </body>
 </html>

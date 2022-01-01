@@ -1,28 +1,18 @@
-const { join, resolve } = require('path')
-const { copySync, removeSync } = require('fs-extra')
+const { join } = require('path')
 const mix = require('laravel-mix')
 
 mix
   .js('resources/js/app.js', 'public/dist/js').vue({
     extractStyles: true
   })
-  .sass('resources/sass/bootstrap.scss', 'public/dist/css'
-  /*, {
-    sassOptions: {
-      quietDeps: true // todo: remove after upgrade to bootstrap 5
-    }
-  }
-  */)
+  .sass('resources/sass/bootstrap.scss', 'public/dist/css')
   .sass('resources/sass/app.scss', 'public/dist/css')
-
   .disableNotifications()
 
 if (mix.inProduction()) {
-  require('laravel-mix-versionhash')
   mix
-    // .extract() // Disabled until resolved: https://github.com/JeffreyWay/laravel-mix/issues/1889
-    // .version() // Use `laravel-mix-versionhash` for the generating correct Laravel Mix manifest file.
-    .versionHash()
+    .extract()
+    .version()
 } else {
   mix.sourceMaps()
 }
@@ -33,23 +23,5 @@ mix.webpackConfig({
     alias: {
       '~': join(__dirname, './resources/js')
     }
-  },
-  output: {
-    chunkFilename: 'dist/js/[chunkhash].js',
-    path: resolve(__dirname, mix.inProduction() ? './public/build' : './public')
   }
 })
-
-mix.then(() => {
-  if (mix.inProduction()) {
-    process.nextTick(() => publishAseets())
-  }
-})
-
-function publishAseets () {
-  const publicDir = resolve(__dirname, './public')
-
-  removeSync(join(publicDir, 'dist'))
-  copySync(join(publicDir, 'build', 'dist'), join(publicDir, 'dist'))
-  removeSync(join(publicDir, 'build'))
-}

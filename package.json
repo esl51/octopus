@@ -4,7 +4,7 @@
     "dev": "mix watch --hot",
     "watch": "mix watch",
     "build": "mix --production",
-    "lint": "eslint --fix --ext .js,.vue resources/js && stylelint resources/sass,resources/js/**/*.vue --fix"
+    "lint": "eslint --fix --ext .js,.vue resources/js && stylelint resources/sass resources/js/**/*.vue --fix"
   },
   "dependencies": {
     "axios": "^0.24.0",
@@ -40,10 +40,12 @@
     "eslint-plugin-vue": "^7.20.0",
     "laravel-mix": "^6.0.39",
     "postcss": "^8.4.5",
+    "postcss-html": "^1.3.0",
     "resolve-url-loader": "^4.0.0",
     "sass": "^1.45.2",
     "sass-loader": "^12.4.0",
     "stylelint": "^14.2.0",
+    "stylelint-config-recommended-vue": "^1.1.0",
     "stylelint-config-standard-scss": "^3.0.0",
     "vue-loader": "^15.9.8",
     "vue-template-compiler": "^2.6.14"

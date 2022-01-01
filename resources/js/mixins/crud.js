@@ -19,7 +19,9 @@ export const crud = {
     filters: {},
     form: {},
     attributes: {},
-    translatedAttributes: {}
+    translatedAttributes: {},
+    viewId: 'itemView',
+    modalId: 'itemModal'
   }),
 
   computed: mapGetters({
@@ -44,14 +46,24 @@ export const crud = {
         }
       }
       this.isBusy = true
-      const { data } = await this.$axios.get(ctx.apiUrl, { params })
+      const { data } = await this.$axios.get(ctx ? ctx.apiUrl : this.apiUrl, { params })
+      if (Object.prototype.hasOwnProperty.call(this, 'items')) {
+        this.items = data.data
+      }
       this.isBusy = false
-      this.totalRows = data.meta.total
+      if (data.meta && data.meta.total) {
+        this.totalRows = data.meta.total
+      } else {
+        this.totalRows = data.data ? data.data.length : 0
+      }
       return data.data
     },
 
     async refreshItems () {
-      this.$refs.items.refresh()
+      if (this.$refs.items) {
+        this.$refs.items.refresh()
+      }
+      this.$emit('refresh')
     },
 
     initForm (formName, attributes, translatedAttributes) {
@@ -125,12 +137,12 @@ export const crud = {
 
     viewItem (item) {
       this.item = item
-      this.$bvModal.show('itemView')
+      this.$bvModal.show(this.viewId)
     },
 
     addItem () {
       this.item = {}
-      this.$bvModal.show('itemModal')
+      this.$bvModal.show(this.modalId)
       this.initForm()
     },
 
@@ -142,14 +154,16 @@ export const crud = {
       })
       this.item = data.data
       this.refreshItems()
-      this.$bvModal.hide('itemModal')
+      this.$bvModal.hide(this.modalId)
       this.initForm()
+      this.$emit('create')
+      this.$emit('change')
     },
 
     editItem (item) {
       this.item = item
       this.fillForm(item)
-      this.$bvModal.show('itemModal')
+      this.$bvModal.show(this.modalId)
     },
 
     async updateItem () {
@@ -161,8 +175,10 @@ export const crud = {
       })
       this.item = data.data
       this.refreshItems()
-      this.$bvModal.hide('itemModal')
+      this.$bvModal.hide(this.modalId)
       this.initForm()
+      this.$emit('update')
+      this.$emit('change')
     },
 
     async submitItem () {
@@ -185,6 +201,8 @@ export const crud = {
       if (value) {
         await this.$axios.delete(this.apiUrl + item.id)
         this.refreshItems()
+        this.$emit('delete')
+        this.$emit('change')
       }
     },
 
@@ -207,5 +225,8 @@ export const crud = {
 
   created () {
     this.initForm()
+    if (this.$route.query && this.$route.query.search) {
+      this.search = this.$route.query.search
+    }
   }
 }

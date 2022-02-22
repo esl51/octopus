@@ -22,7 +22,7 @@ class LoginTest extends DuskTestCase
         $user = User::factory()->create();
 
         $this->browse(function ($browser) use ($user) {
-            $browser->visit(new Login)
+            $browser->visit(new Login())
                 ->submit($user->email, 'password')
                 ->assertPageIs(Home::class);
         });
@@ -32,7 +32,7 @@ class LoginTest extends DuskTestCase
     public function login_with_invalid_credentials()
     {
         $this->browse(function ($browser) {
-            $browser->visit(new Login)
+            $browser->visit(new Login())
                 ->submit('test@test.app', 'password')
                 ->assertSee('These credentials do not match our records.');
         });
@@ -44,9 +44,9 @@ class LoginTest extends DuskTestCase
         $user = User::factory()->create();
 
         $this->browse(function ($browser) use ($user) {
-            $browser->visit(new Login)
+            $browser->visit(new Login())
                 ->submit($user->email, 'password')
-                ->on(new Home)
+                ->on(new Home())
                 ->clickLogout()
                 ->assertPageIs(Login::class);
         });

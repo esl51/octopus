@@ -81,7 +81,7 @@ class OAuthController extends Controller
         }
 
         if (User::where('email', $user->getEmail())->exists()) {
-            throw new EmailTakenException;
+            throw new EmailTakenException();
         }
 
         return $this->createUser($provider, $user);

@@ -17,7 +17,8 @@ class Localization
     public function handle($request, Closure $next)
     {
         $locale = $this->getLocale();
-        if ($locale === config('app.fallback_locale')
+        if (
+            $locale === config('app.fallback_locale')
             && (Str::startsWith(request()->path(), "$locale/")
                 || request()->path() === $locale
             )

@@ -20,7 +20,7 @@ class RegisterTest extends DuskTestCase
     public function register_with_valid_data()
     {
         $this->browse(function ($browser) {
-            $browser->visit(new Register)
+            $browser->visit(new Register())
                 ->submit([
                     'name' => 'Test User',
                     'email' => 'test@test.app',
@@ -37,7 +37,7 @@ class RegisterTest extends DuskTestCase
         $user = User::factory()->create();
 
         $this->browse(function ($browser) use ($user) {
-            $browser->visit(new Register)
+            $browser->visit(new Register())
                 ->submit([
                     'name' => 'Test User',
                     'email' => $user->email,

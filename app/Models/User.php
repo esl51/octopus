@@ -25,11 +25,11 @@ use Roquie\LaravelPerPageResolver\PerPageResolverTrait;
  */
 class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 {
-    use Notifiable,
-        HasFactory,
-        HasRoles,
-        ExposePermissions,
-        PerPageResolverTrait;
+    use Notifiable;
+    use HasFactory;
+    use HasRoles;
+    use ExposePermissions;
+    use PerPageResolverTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -141,7 +141,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
      */
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new VerifyEmail);
+        $this->notify(new VerifyEmail());
     }
 
     /**

@@ -32,7 +32,7 @@ class PageController extends ItemController
             'status_id' => 'required|exists:statuses,id',
             'translations' => 'nullable|array',
             'translations.*' => 'nullable|array',
-            'translations.*.slug' => ['required', 'max:255', new Slug],
+            'translations.*.slug' => ['required', 'max:255', new Slug()],
             'translations.*.title' => 'nullable|string|max:255',
             'translations.' . config('translatable.fallback_locale') . '.title' => 'required|string|max:255',
             'translations.*.headline' => 'nullable|string|max:255',

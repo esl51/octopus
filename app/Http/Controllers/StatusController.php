@@ -39,7 +39,7 @@ class StatusController extends ItemController
     protected function sortByTranslations()
     {
         return [
-            'name' => 'status_translations.name'
+            'name' => 'status_translations.name',
         ];
     }
 

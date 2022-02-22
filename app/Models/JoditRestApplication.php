@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Jodit\Application;
 
-class JoditRestApplication extends Application {
-
-    function checkAuthentication() {
+class JoditRestApplication extends Application
+{
+    public function checkAuthentication()
+    {
         return true;
     }
 }

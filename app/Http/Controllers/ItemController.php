@@ -107,7 +107,7 @@ abstract class ItemController extends Controller
      */
     protected function newItemsQuery(Request $request)
     {
-        $table = (new $this->class)->getTable();
+        $table = (new $this->class())->getTable();
 
         // Need to take all columns from table for grouping by them later
         $columns = [];
@@ -163,7 +163,7 @@ abstract class ItemController extends Controller
      */
     public function getItem($id, $withRelations = false)
     {
-        $table = (new $this->class)->getTable();
+        $table = (new $this->class())->getTable();
 
         // Need to take all columns from table for grouping by them later
         $columns = [];

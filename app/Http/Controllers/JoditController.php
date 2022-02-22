@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class JoditController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +19,7 @@ class JoditController extends Controller
         try {
             $fileBrowser->checkAuthentication();
             $fileBrowser->execute();
-        } catch(\ErrorException $e) {
+        } catch (\ErrorException $e) {
             $fileBrowser->exceptionHandler($e);
         }
     }

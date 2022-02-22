@@ -14,7 +14,6 @@ use App\Http\Controllers\PageController;
 |
 */
 $routes = function () {
-
     // Admin routes
     Route::get('admin/{path?}', function () {
         return view('admin');
@@ -26,7 +25,6 @@ $routes = function () {
 
     // Other routes
     Route::get('{slug?}', [PageController::class, 'render']);
-
 };
 
 Route::group([

@@ -67,7 +67,7 @@
 
 <script>
 import Form from 'vform'
-import FormResult from '~/components/FormResult'
+import FormResult from '~/components/layout/FormResult'
 
 export default {
   components: {

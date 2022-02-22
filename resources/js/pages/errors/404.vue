@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import FormResult from '~/components/FormResult'
+import FormResult from '~/components/layout/FormResult'
 
 export default {
   name: 'NotFound',

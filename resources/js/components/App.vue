@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Loading from './Loading'
+import Loading from './layout/Loading'
 
 // Load layout components dynamically.
 const requireContext = require.context('~/layouts', false, /.*\.vue$/)

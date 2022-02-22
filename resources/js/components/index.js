@@ -1,42 +1,38 @@
 import Vue from 'vue'
-import Child from './Child'
-import PageHeader from './PageHeader'
-import Checkbox from './Checkbox'
-import Checkboxes from './Checkboxes'
-import Select from './Select'
-import VariantSelect from './VariantSelect'
-import ActionButton from './ActionButton'
-import Autocomplete from './Autocomplete'
-import Datepicker from './Datepicker'
-import Input from './Input'
-import NumberInput from './NumberInput'
-import FileInput from './FileInput'
-import FileList from './FileList'
-import Textarea from './Textarea'
-import Editor from './Editor'
-import TranslatableSwitch from './TranslatableSwitch'
-import TranslatableInput from './TranslatableInput'
-import TranslatableTextarea from './TranslatableTextarea'
-import TranslatableEditor from './TranslatableEditor'
-import Submit from './Submit'
-import Tabs from './Tabs'
-import Icon from './Icon'
+import Checkbox from './form/Checkbox'
+import Checkboxes from './form/Checkboxes'
+import Select from './form/Select'
+import VariantSelect from './form/VariantSelect'
+import Autocomplete from './form/Autocomplete'
+import Datepicker from './form/Datepicker'
+import Input from './form/Input'
+import NumberInput from './form/NumberInput'
+import FileInput from './form/FileInput'
+import Textarea from './form/Textarea'
+import Editor from './form/Editor'
+import TranslatableSwitch from './form/TranslatableSwitch'
+import TranslatableInput from './form/TranslatableInput'
+import TranslatableTextarea from './form/TranslatableTextarea'
+import TranslatableEditor from './form/TranslatableEditor'
+import Submit from './form/Submit'
+import Tabs from './controls/Tabs'
+import Icon from './controls/Icon'
+import FileList from './controls/FileList'
+import ActionButton from './controls/ActionButton'
+import Child from './layout/Child'
+import PageHeader from './layout/PageHeader'
 
 // Components that are registered globally.
 [
-  Child,
-  PageHeader,
   Checkbox,
   Checkboxes,
   Select,
   VariantSelect,
-  ActionButton,
   Autocomplete,
   Datepicker,
   Input,
   NumberInput,
   FileInput,
-  FileList,
   Textarea,
   Editor,
   TranslatableSwitch,
@@ -45,7 +41,11 @@ import Icon from './Icon'
   TranslatableEditor,
   Submit,
   Tabs,
-  Icon
+  Icon,
+  FileList,
+  ActionButton,
+  Child,
+  PageHeader
 ].forEach(Component => {
   Vue.component(Component.name, Component)
 })

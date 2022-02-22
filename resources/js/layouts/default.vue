@@ -22,8 +22,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import Sidebar from '~/components/Sidebar'
-import Navbar from '~/components/Navbar'
+import Sidebar from '~/components/layout/Sidebar'
+import Navbar from '~/components/layout/Navbar'
 
 export default {
   name: 'MainLayout',

@@ -66,6 +66,21 @@ class PageController extends ItemController
     /**
      * @inheritdoc
      */
+    public function checkPermissions($query)
+    {
+        /** @var \App\Models\User $currentUser */
+        $currentUser = auth()->user();
+
+        if ($currentUser->can('manage posts')) {
+            return $query;
+        } else {
+            return $query->published();
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function newItemsQuery(Request $request)
     {
         $items = parent::newItemsQuery($request);

@@ -35,10 +35,6 @@ Route::group(['middleware' => 'auth:api', 'verified'], function () {
     Route::patch('settings/profile', [ProfileController::class, 'update']);
     Route::patch('settings/password', [PasswordController::class, 'update']);
 
-    // Roles
-    Route::get('access/roles', [RoleController::class, 'index']);
-    Route::get('access/roles/{role}', [RoleController::class, 'show']);
-
     // Manage access
     Route::group(['middleware' => ['permission:manage access']], function () {
 
@@ -57,9 +53,9 @@ Route::group(['middleware' => 'auth:api', 'verified'], function () {
         Route::delete('access/roles/{role}', [RoleController::class, 'destroy']);
     });
 
-    // Users
-    Route::get('access/users', [UserController::class, 'index']);
-    Route::get('access/users/{user}', [UserController::class, 'show']);
+    // Roles
+    Route::get('access/roles', [RoleController::class, 'index']);
+    Route::get('access/roles/{role}', [RoleController::class, 'show']);
 
     // Manage users
     Route::group(['middleware' => ['permission:manage users']], function () {
@@ -70,9 +66,9 @@ Route::group(['middleware' => 'auth:api', 'verified'], function () {
         Route::delete('access/users/{user}', [UserController::class, 'destroy']);
     });
 
-    // Statuses
-    Route::get('statuses', [StatusController::class, 'index']);
-    Route::get('statuses/{status}', [StatusController::class, 'show']);
+    // Users
+    Route::get('access/users', [UserController::class, 'index']);
+    Route::get('access/users/{user}', [UserController::class, 'show']);
 
     // Manage directories
     Route::group(['middleware' => ['permission:manage directories']], function () {
@@ -83,8 +79,9 @@ Route::group(['middleware' => 'auth:api', 'verified'], function () {
         Route::delete('statuses/{status}', [StatusController::class, 'destroy']);
     });
 
-    Route::get('pages', [PageController::class, 'index']);
-    Route::get('pages/{page}', [PageController::class, 'show']);
+    // Statuses
+    Route::get('statuses', [StatusController::class, 'index']);
+    Route::get('statuses/{status}', [StatusController::class, 'show']);
 
     // Manage pages
     Route::group(['middleware' => ['permission:manage pages']], function () {
@@ -93,6 +90,9 @@ Route::group(['middleware' => 'auth:api', 'verified'], function () {
         Route::put('pages/{page}', [PageController::class, 'update']);
         Route::delete('pages/{page}', [PageController::class, 'destroy']);
     });
+
+    Route::get('pages', [PageController::class, 'index']);
+    Route::get('pages/{page}', [PageController::class, 'show']);
 
     Route::post('jodit', [JoditController::class, 'index']);
 });

@@ -16,7 +16,7 @@
     "laravel/socialite": "^5.0",
     "laravel/tinker": "^2.5",
     "laravel/ui": "^3.0",
-    "roquie/laravel-perpage-resolver": "dev-master",
+    "roquie/laravel-perpage-resolver": "^1.2.0",
     "spatie/laravel-permission": "^5.4.1",
     "tymon/jwt-auth": "^1.0.1"
   },
@@ -70,11 +70,5 @@
       "mkdir -p storage/app/public/media",
       "@php artisan storage:link"
     ]
-  },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "git@github.com:esl51/laravel-perpage-resolver.git"
-    }
-  ]
+  }
 }

@@ -83,11 +83,12 @@ Route::group(['middleware' => 'auth:api', 'verified'], function () {
         Route::delete('statuses/{status}', [StatusController::class, 'destroy']);
     });
 
+    Route::get('pages', [PageController::class, 'index']);
+    Route::get('pages/{page}', [PageController::class, 'show']);
+
     // Manage pages
     Route::group(['middleware' => ['permission:manage pages']], function () {
-        Route::get('pages', [PageController::class, 'index']);
         Route::get('pages/slug', [PageController::class, 'slug']);
-        Route::get('pages/{page}', [PageController::class, 'show']);
         Route::post('pages', [PageController::class, 'store']);
         Route::put('pages/{page}', [PageController::class, 'update']);
         Route::delete('pages/{page}', [PageController::class, 'destroy']);

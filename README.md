@@ -16,7 +16,7 @@ php artisan storage:link
 ```
 Edit `.env` and set your database connection details
 ```bash
-php artisan migrate
+php artisan migrate:fresh --seed
 npm install
 ```
 ## Usage

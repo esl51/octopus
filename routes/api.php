@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\JoditController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\OAuthController;
@@ -93,8 +92,6 @@ Route::group(['middleware' => 'auth:api', 'verified'], function () {
 
     Route::get('pages', [PageController::class, 'index']);
     Route::get('pages/{page}', [PageController::class, 'show']);
-
-    Route::post('jodit', [JoditController::class, 'index']);
 });
 
 Route::group(['middleware' => 'guest:api'], function () {

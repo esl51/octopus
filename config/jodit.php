@@ -1,50 +1,106 @@
 <?php
 
-$config = [
-    'datetimeFormat' => 'm/d/Y g:i A',
-    'quality' => 90,
-    'defaultPermission' => 0775,
-    'sources' => [
-        'default' => [],
-    ],
-    'createThumb' => true,
-    'thumbFolderName' => '_thumbs',
-    'excludeDirectoryNames' => ['.tmb', '.quarantine'],
-    'maxFileSize' => '8mb',
-    'allowCrossOrigin' => false,
-    'allowReplaceSourceFile' => true,
-    'baseurl' => '/storage/media/',
-    'root' => storage_path('app/public/media/'),
-    'extensions' => ['jpg', 'png', 'gif', 'jpeg'],
-    'imageExtensions' => ['jpg', 'png', 'gif', 'jpeg'],
-    'debug' => config('app.debug'),
-    'accessControl' => []
-];
-$config['roleSessionVar'] = 'JoditUserRole';
-$config['accessControl'][] = [
-    'role' => '*',
-    'extensions' => '*',
-    'path' => storage_path('app/public/media/'),
-    'FILES' => true,
-    'FILE_MOVE' => true,
-    'FILE_UPLOAD' => true,
-    'FILE_UPLOAD_REMOTE' => true,
-    'FILE_REMOVE' => true,
-    'FILE_RENAME' => true,
-    'FOLDERS' => true,
-    'FOLDER_MOVE' => true,
-    'FOLDER_REMOVE' => true,
-    'FOLDER_RENAME' => true,
-    'IMAGE_RESIZE' => true,
-    'IMAGE_CROP' => true,
-];
-$config['accessControl'][] = [
-    'role' => '*',
-    'extensions' => 'exe,bat,com,sh,swf',
-    'FILE_MOVE' => false,
-    'FILE_UPLOAD' => false,
-    'FILE_UPLOAD_REMOTE' => false,
-    'FILE_RENAME' => false,
-];
+return [
+    'need_auth' => env('JODIT_FILE_BROWSER_NEED_AUTH', true),
 
-return $config;
+    /*
+     * Relative path to filebrowser directory
+     */
+    'root' => env('JODIT_FILE_BROWSER_ROOT', 'public/media'),
+
+    /*
+     * Root directory name, without spaces
+     */
+    'root_name' => env('JODIT_FILE_BROWSER_ROOT_NAME', 'default'),
+
+    /*
+     * digits after decimal point in file size
+     */
+    'file_size_accuracy' => env('JODIT_FILE_BROWSER_FILE_SIZE_ACCURACY', 3),
+
+    /*
+     * Allowed to upload Image types
+     */
+    'mimetypes' => [
+        'images' => [
+            'jpeg',
+            'jpg',
+            'gif',
+            'png',
+            'bmp',
+            'svg',
+        ],
+    ],
+
+    'thumb' => [
+        'dir_url' => env('JODIT_THUMB_DIR_URL', env('APP_URL') . '/assets/images/jodit/'),
+
+        'mask' => env('JODIT_THUMB_MASK', 'thumb-%s.svg'),
+
+        'unknown_extension' => env('JODIT_THUMB_UNKNOWN_EXTENSION', 'thumb-unknown.svg'),
+
+        /*
+         * In case the icons are located on another server
+         */
+        'exists' => explode(
+            ',',
+            env('JODIT_THUMB_EXTENSION_EXISTS', '')
+        ),
+
+    ],
+
+    'auth_token_parameter' => env('JODIT_FILE_BROWSER_AUTH_TOKEN_PARAMETER', 'access_token'),
+
+    /*
+     * Directory nesting limit
+     */
+    'nesting_limit' => env('JODIT_FILE_BROWSER_NESTING_LIMIT', 3),
+
+    /*
+     * List of file types that jodit editor renames on upload
+     */
+    'jodit_broken_extension' => explode(
+        ',',
+        env('JODIT_BROKEN_EXTENSION', 'vnd,plain,msword')
+    ),
+
+    'cache' => [
+        'key' => env('JODIT_FILE_BROWSER_CACHE_KEY', 'filebrowser'),
+
+        'duration' => env('JODIT_FILE_BROWSER_CACHE_DURATION', 3600),
+    ],
+
+    'middlewares' => [
+        'auth:api',
+    ],
+
+    'routes' => [
+        'middleware' => env('JODIT_FILE_BROWSER_MIDDLEWARE', 'api'),
+
+        'prefix' => env('JODIT_FILE_BROWSER_PATH_PREFIX'),
+
+        'upload_path' => env('JODIT_FILE_BROWSER_UPLOAD_PATH', 'api/jodit/upload'),
+        'browse_path' => env('JODIT_FILE_BROWSER_BROWSE_PATH', 'api/jodit/browse'),
+
+        'upload_name' => env('JODIT_FILE_BROWSER_UPLOAD_ROUTE_NAME', 'jodit.upload'),
+        'browse_name' => env('JODIT_FILE_BROWSER_BROWSE_ROUTE_NAME', 'jodit.browse'),
+
+    ],
+
+    'upload_actions' => [
+        Do6po\LaravelJodit\Actions\FileUploadAction::class,
+    ],
+
+    'file_actions' => [
+        Do6po\LaravelJodit\Actions\Files::class,
+        Do6po\LaravelJodit\Actions\FileRename::class,
+        Do6po\LaravelJodit\Actions\FileMove::class,
+        Do6po\LaravelJodit\Actions\FileRemove::class,
+        Do6po\LaravelJodit\Actions\Folders::class,
+        Do6po\LaravelJodit\Actions\FolderCreate::class,
+        Do6po\LaravelJodit\Actions\FolderMove::class,
+        Do6po\LaravelJodit\Actions\FolderRemove::class,
+        Do6po\LaravelJodit\Actions\FolderRename::class,
+        Do6po\LaravelJodit\Actions\Permissions::class,
+    ],
+];

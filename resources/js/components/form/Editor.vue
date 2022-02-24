@@ -25,7 +25,7 @@
 
 <script>
 import { control } from '~/mixins/control'
-import 'jodit/build/jodit.min.css'
+import { joditEditor } from '~/mixins/joditEditor'
 import { JoditEditor } from 'jodit-vue'
 
 export default {
@@ -34,34 +34,6 @@ export default {
   components: {
     JoditEditor
   },
-  mixins: [control],
-
-  data: () => ({
-    editorButtons: ['undo', 'redo', 'paragraph', '|', 'bold', 'italic', 'underline', 'strikethrough', 'align', '|', 'table', 'link', 'hr', '|', 'ul', 'ol', '|', 'superscript', 'subscript', '|', 'image', 'file', 'video', '|', 'eraser', 'fullsize', 'source'],
-    editorConfig: {
-      controls: {
-        paragraph: {
-          list: {
-            p: 'Normal'
-          }
-        }
-      },
-      defaultActionOnPaste: 'insert_clear_html',
-      filebrowser: {
-        ajax: {
-          url: '/api/jodit/'
-        }
-      },
-      uploader: {
-        url: '/api/jodit/?action=fileUpload'
-      }
-    }
-  }),
-
-  created () {
-    this.editorConfig.autofocus = this.autofocus
-    this.editorConfig.disabled = this.disabled
-    this.editorConfig.readonly = this.readonly
-  }
+  mixins: [control, joditEditor]
 }
 </script>

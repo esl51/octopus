@@ -117,6 +117,28 @@ class PageTest extends ItemTest
     }
 
     /** @test */
+    public function can_render_localized_page()
+    {
+        $this->actingAs($this->user);
+        $item = Page::factory()->create([
+            'body' => '<p>This is page</p>',
+            'slug' => 'this-is-page',
+            'status_id' => $this->publishedStatus->id,
+            'ru' => [
+                'body' => '<p>Это страница</p>',
+                'slug' => 'this-is-page',
+            ]
+        ]);
+
+        app()->setLocale('ru');
+
+        $this->actingAs(User::factory()->create())
+            ->get($item->url)
+            ->assertSuccessful()
+            ->assertSeeText('Это страница');
+    }
+
+    /** @test */
     public function can_not_render_not_existing_page()
     {
         $this->actingAs(User::factory()->create())

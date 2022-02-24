@@ -59,4 +59,21 @@ class LoginTest extends TestCase
         $this->getJson("/api/user?token=$token")
             ->assertStatus(401);
     }
+
+    /** @test */
+    public function can_throttle()
+    {
+        for ($i = 0; $i <= 100; $i++) {
+            $this->postJson('/api/login', [
+                'email' => 'test@test.app',
+                'password' => 'testmenow',
+            ]);
+        }
+        $this->postJson('/api/login', [
+            'email' => 'test@test.app',
+            'password' => 'testmenow',
+        ])
+            ->assertStatus(422)
+            ->assertJsonFragment([trans('auth.throttle', ['seconds' => 60])]);
+    }
 }

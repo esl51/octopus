@@ -7,12 +7,12 @@ Inspired by https://github.com/cretueusebiu/laravel-vue-spa
 
 ```bash
 git clone git@github.com:esl51/octopus.git ./
-composer install
+composer update
+cp .env.example .env
 php artisan key:generate --ansi
 php artisan jwt:secret --force --ansi
 mkdir -p storage/app/public/media
 php artisan storage:link
-cp .env.example .env
 ```
 Edit `.env` and set your database connection details
 ```bash

@@ -22,6 +22,21 @@ class LoginTest extends TestCase
     }
 
     /** @test */
+    public function can_not_authenticate_not_verified()
+    {
+        $user = User::factory()->create([
+            'email_verified_at' => null,
+        ]);
+
+        $this->postJson('/api/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ])
+            ->assertStatus(422)
+            ->assertJsonValidationErrors(['email']);
+    }
+
+    /** @test */
     public function fetch_the_current_user()
     {
         $this->actingAs(User::factory()->create())

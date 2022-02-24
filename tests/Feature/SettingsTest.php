@@ -31,11 +31,11 @@ class SettingsTest extends TestCase
     {
         $this->actingAs($user = User::factory()->create())
             ->patchJson('/api/settings/password', [
-                'password' => 'updated',
-                'password_confirmation' => 'updated',
+                'password' => 'updated00',
+                'password_confirmation' => 'updated00',
             ])
             ->assertSuccessful();
 
-        $this->assertTrue(Hash::check('updated', $user->password));
+        $this->assertTrue(Hash::check('updated00', $user->password));
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Status
@@ -18,6 +19,7 @@ use Astrotomic\Translatable\Translatable;
 class Status extends Model
 {
     use Translatable;
+    use HasFactory;
 
     protected $fillable = [
         'variant',

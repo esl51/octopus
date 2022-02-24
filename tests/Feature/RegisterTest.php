@@ -13,11 +13,11 @@ class RegisterTest extends TestCase
         $this->postJson('/api/register', [
             'name' => 'Test User',
             'email' => 'test@test.app',
-            'password' => 'secret',
-            'password_confirmation' => 'secret',
+            'password' => 'secret00',
+            'password_confirmation' => 'secret00',
         ])
             ->assertSuccessful()
-            ->assertJsonStructure(['id', 'name', 'email']);
+            ->assertJsonFragment(['status' => trans('verification.sent')]);
     }
 
     /** @test */
@@ -28,8 +28,8 @@ class RegisterTest extends TestCase
         $this->postJson('/api/register', [
             'name' => 'Test User',
             'email' => 'test@test.app',
-            'password' => 'secret',
-            'password_confirmation' => 'secret',
+            'password' => 'secret00',
+            'password_confirmation' => 'secret00',
         ])
             ->assertStatus(422)
             ->assertJsonValidationErrors(['email']);

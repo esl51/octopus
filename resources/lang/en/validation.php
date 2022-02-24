@@ -147,6 +147,7 @@ return [
     */
 
     'attributes' => [
+        'email' => 'E-mail',
         'file' => 'Files',
         'file.*' => 'Files',
         'translations.*.title' => 'Title',

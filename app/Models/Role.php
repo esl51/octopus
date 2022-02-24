@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Permission\Models\Role as BaseRole;
 use Roquie\LaravelPerPageResolver\PerPageResolverTrait;
 
 class Role extends BaseRole
 {
     use PerPageResolverTrait;
+    use HasFactory;
 
     /**
      * @inheritdoc

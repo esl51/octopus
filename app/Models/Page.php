@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Page
@@ -23,6 +24,7 @@ use Astrotomic\Translatable\Translatable;
 class Page extends Model
 {
     use Translatable;
+    use HasFactory;
 
     protected $fillable = [
         'author_id',

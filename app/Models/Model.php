@@ -26,9 +26,4 @@ abstract class Model extends BaseModel
     {
         return true;
     }
-
-    public function newEloquentBuilder($query)
-    {
-        return new EloquentBuilder($query);
-    }
 }

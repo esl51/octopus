@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use Tests\ItemTest;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Http\UploadedFile;
 
 class UserTest extends ItemTest
 {
@@ -20,6 +19,7 @@ class UserTest extends ItemTest
     ];
     protected $uri = '/api/access/users';
     protected $class = User::class;
+    protected $admin;
 
     public function setUp(): void
     {
@@ -33,6 +33,9 @@ class UserTest extends ItemTest
             'password' => 'secret00',
             'password_confirmation' => 'secret00',
         ];
+        $this->admin = User::factory()->afterCreating(function ($model) {
+            $model->assignRole('admin');
+        })->create();
     }
 
     protected function createItem()
@@ -86,5 +89,15 @@ class UserTest extends ItemTest
             ->getJson($this->uri . '/?role=' . Role::findByName('root')->id)
             ->assertSuccessful()
             ->assertJsonStructure(['data' => ['*' => $this->validStructure['data']]]);
+    }
+
+    /** @test */
+    public function admin_has_can_attribute()
+    {
+        $this->createItem();
+        $this->actingAs($this->admin)
+            ->getJson('/api/user')
+            ->assertSuccessful()
+            ->assertJsonStructure(['can']);
     }
 }

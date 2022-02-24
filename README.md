@@ -6,9 +6,15 @@ Inspired by https://github.com/cretueusebiu/laravel-vue-spa
 ## Installation
 
 ```bash
-composer create-project --prefer-dist esl51/octopus
+git clone git@github.com:esl51/octopus.git ./
+composer install
+php artisan key:generate --ansi
+php artisan jwt:secret --force --ansi
+mkdir -p storage/app/public/media
+php artisan storage:link
+cp .env.example .env
 ```
-Edit .env and set your database connection details
+Edit `.env` and set your database connection details
 ```bash
 php artisan migrate
 npm install

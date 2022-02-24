@@ -74,6 +74,6 @@ class LoginTest extends TestCase
             'password' => 'testmenow',
         ])
             ->assertStatus(422)
-            ->assertJsonFragment([trans('auth.throttle', ['seconds' => 60])]);
+            ->assertSeeText('Too many login attempts');
     }
 }

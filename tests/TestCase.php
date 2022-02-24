@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Storage;
 
 /**
  * Test Case
- * Run tests: ./artisan test
- * Get coverage: XDEBUG_MODE=coverage ./artisan test --coverage-html ~/octopus-coverage
  */
 abstract class TestCase extends BaseTestCase
 {
